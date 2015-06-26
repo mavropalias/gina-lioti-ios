@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8118.20" systemVersion="15A204h" minimumToolsVersion="Automatic">
-    <entity name="Course" syncable="YES">
+    <entity name="Course" representedClassName="Course" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="courses" inverseEntity="Recipe" syncable="YES"/>
     </entity>
-    <entity name="Ingredient" syncable="YES">
+    <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="recipeIngredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredients" inverseName="ingredient" inverseEntity="RecipeIngredients" syncable="YES"/>
     </entity>
-    <entity name="Recipe" syncable="YES">
+    <entity name="Recipe" representedClassName="Recipe" syncable="YES">
         <attribute name="cookMinutes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="datePublished" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="descriptionText" optional="YES" attributeType="String" syncable="YES"/>
@@ -21,7 +21,7 @@
         <relationship name="courses" toMany="YES" deletionRule="Cascade" destinationEntity="Course" inverseName="recipes" inverseEntity="Course" syncable="YES"/>
         <relationship name="ingredients" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredients" inverseName="recipe" inverseEntity="RecipeIngredients" syncable="YES"/>
     </entity>
-    <entity name="RecipeIngredients" syncable="YES">
+    <entity name="RecipeIngredients" representedClassName="RecipeIngredients" syncable="YES">
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <relationship name="ingredient" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipeIngredients" inverseEntity="Ingredient" syncable="YES"/>
