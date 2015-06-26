@@ -5,6 +5,22 @@
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForTesting = "YES"
+            buildForRunning = "YES"
+            buildForProfiling = "YES"
+            buildForArchiving = "YES"
+            buildForAnalyzing = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2E6D757F1B3D7E650015307B"
+               BuildableName = "Gina Lioti Cooking.app"
+               BlueprintName = "Gina Lioti Cooking"
+               ReferencedContainer = "container:Gina Lioti Cooking.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
    </BuildAction>
    <TestAction
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
@@ -12,7 +28,36 @@
       shouldUseLaunchSchemeArgsEnv = "YES"
       buildConfiguration = "Debug">
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2E6D75961B3D7E650015307B"
+               BuildableName = "Gina Lioti CookingTests.xctest"
+               BlueprintName = "Gina Lioti CookingTests"
+               ReferencedContainer = "container:Gina Lioti Cooking.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "2E6D75A11B3D7E650015307B"
+               BuildableName = "Gina Lioti CookingUITests.xctest"
+               BlueprintName = "Gina Lioti CookingUITests"
+               ReferencedContainer = "container:Gina Lioti Cooking.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
+      <MacroExpansion>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2E6D757F1B3D7E650015307B"
+            BuildableName = "Gina Lioti Cooking.app"
+            BlueprintName = "Gina Lioti Cooking"
+            ReferencedContainer = "container:Gina Lioti Cooking.xcodeproj">
+         </BuildableReference>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
    </TestAction>
@@ -26,6 +71,16 @@
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
       allowLocationSimulation = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2E6D757F1B3D7E650015307B"
+            BuildableName = "Gina Lioti Cooking.app"
+            BlueprintName = "Gina Lioti Cooking"
+            ReferencedContainer = "container:Gina Lioti Cooking.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
       <AdditionalOptions>
       </AdditionalOptions>
    </LaunchAction>
@@ -35,6 +90,16 @@
       useCustomWorkingDirectory = "NO"
       buildConfiguration = "Release"
       debugDocumentVersioning = "YES">
+      <BuildableProductRunnable
+         runnableDebuggingMode = "0">
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "2E6D757F1B3D7E650015307B"
+            BuildableName = "Gina Lioti Cooking.app"
+            BlueprintName = "Gina Lioti Cooking"
+            ReferencedContainer = "container:Gina Lioti Cooking.xcodeproj">
+         </BuildableReference>
+      </BuildableProductRunnable>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">
