@@ -1,36 +1,60 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="8118.20" systemVersion="15A204h" minimumToolsVersion="Automatic">
     <entity name="Course" representedClassName="Course" syncable="YES">
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="recipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" inverseName="courses" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="Ingredient" representedClassName="Ingredient" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <relationship name="recipeIngredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredients" inverseName="ingredient" inverseEntity="RecipeIngredients" syncable="YES"/>
+        <relationship name="recipeIngredients" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredient" inverseName="ingredient" inverseEntity="RecipeIngredient" syncable="YES"/>
     </entity>
     <entity name="Recipe" representedClassName="Recipe" syncable="YES">
-        <attribute name="cookMinutes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="datePublished" optional="YES" attributeType="Date" syncable="YES"/>
-        <attribute name="descriptionText" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptionA" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descriptionB" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
-        <attribute name="prepMinutes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minutesCook" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minutesPassive" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minutesPrep" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="minutesTotal" optional="YES" syncable="YES"/>
         <attribute name="servingsCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="servingsType" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="waitMinutes" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="courses" toMany="YES" deletionRule="Cascade" destinationEntity="Course" inverseName="recipes" inverseEntity="Course" syncable="YES"/>
-        <relationship name="ingredients" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredients" inverseName="recipe" inverseEntity="RecipeIngredients" syncable="YES"/>
+        <relationship name="ingredients" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredient" inverseName="recipe" inverseEntity="RecipeIngredient" syncable="YES"/>
+        <relationship name="instructions" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeInstruction" inverseName="recipe" inverseEntity="RecipeInstruction" syncable="YES"/>
+        <relationship name="photos" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="RecipePhoto" inverseName="recipe" inverseEntity="RecipePhoto" syncable="YES"/>
+        <relationship name="relatedRecipes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Recipe" syncable="YES"/>
     </entity>
-    <entity name="RecipeIngredients" representedClassName="RecipeIngredients" syncable="YES">
+    <entity name="RecipeIngredient" representedClassName="RecipeIngredients" syncable="YES">
+        <attribute name="group" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="notes" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="quantity" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="quantity" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="quantityNormalized" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="unit" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ingredient" maxCount="1" deletionRule="Nullify" destinationEntity="Ingredient" inverseName="recipeIngredients" inverseEntity="Ingredient" syncable="YES"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingredients" inverseEntity="Recipe" syncable="YES"/>
     </entity>
+    <entity name="RecipeInstruction" syncable="YES">
+        <attribute name="group" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="imageUrl" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="instruction" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipe" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="instructions" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
+    <entity name="RecipePhoto" syncable="YES">
+        <attribute name="caption" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="descrip" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="photo" optional="YES" attributeType="Binary" syncable="YES"/>
+        <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="photos" inverseEntity="Recipe" syncable="YES"/>
+    </entity>
     <elements>
-        <element name="Recipe" positionX="-621" positionY="-135" width="128" height="208"/>
+        <element name="Recipe" positionX="-621" positionY="-135" width="128" height="283"/>
         <element name="Course" positionX="-335" positionY="-126" width="128" height="73"/>
         <element name="Ingredient" positionX="-65" positionY="5" width="128" height="73"/>
-        <element name="RecipeIngredients" positionX="-432" positionY="180" width="128" height="103"/>
+        <element name="RecipeIngredient" positionX="-333" positionY="-36" width="128" height="148"/>
+        <element name="RecipePhoto" positionX="-828" positionY="-90" width="128" height="133"/>
+        <element name="RecipeInstruction" positionX="-333" positionY="128" width="128" height="103"/>
     </elements>
 </model>
