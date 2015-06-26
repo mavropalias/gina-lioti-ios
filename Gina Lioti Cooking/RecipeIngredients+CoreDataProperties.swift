@@ -15,7 +15,10 @@ import CoreData
 extension RecipeIngredients {
 
     @NSManaged var notes: String?
-    @NSManaged var quantity: NSNumber?
+    @NSManaged var quantity: String?
+    @NSManaged var group: String?
+    @NSManaged var unit: String?
+    @NSManaged var quantityNormalized: NSNumber?
     @NSManaged var ingredient: Ingredient?
     @NSManaged var recipe: Recipe?
 

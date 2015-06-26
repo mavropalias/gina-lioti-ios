@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2E6D75841B3D7E650015307B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75831B3D7E650015307B /* AppDelegate.swift */; };
-		2E6D75861B3D7E650015307B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75851B3D7E650015307B /* ViewController.swift */; };
+		2E6D75861B3D7E650015307B /* RecipesVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75851B3D7E650015307B /* RecipesVC.swift */; };
 		2E6D75891B3D7E650015307B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2E6D75871B3D7E650015307B /* Main.storyboard */; };
 		2E6D758C1B3D7E650015307B /* Gina_Lioti_Cooking.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D758A1B3D7E650015307B /* Gina_Lioti_Cooking.xcdatamodeld */; };
 		2E6D758E1B3D7E650015307B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2E6D758D1B3D7E650015307B /* Assets.xcassets */; };
@@ -24,6 +24,10 @@
 		2E6D75D31B3D9D320015307B /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75CB1B3D9D320015307B /* Recipe+CoreDataProperties.swift */; };
 		2E6D75D41B3D9D320015307B /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75CC1B3D9D320015307B /* Recipe.swift */; };
 		2E6D75D81B3DA1580015307B /* RecipeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E6D75D71B3DA1580015307B /* RecipeData.json */; };
+		2E6D75DD1B3DA9210015307B /* RecipeInstruction+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75D91B3DA9210015307B /* RecipeInstruction+CoreDataProperties.swift */; };
+		2E6D75DE1B3DA9210015307B /* RecipeInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75DA1B3DA9210015307B /* RecipeInstruction.swift */; };
+		2E6D75DF1B3DA9210015307B /* RecipePhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75DB1B3DA9210015307B /* RecipePhoto+CoreDataProperties.swift */; };
+		2E6D75E01B3DA9210015307B /* RecipePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75DC1B3DA9210015307B /* RecipePhoto.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +50,7 @@
 /* Begin PBXFileReference section */
 		2E6D75801B3D7E650015307B /* Gina Lioti Cooking.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Gina Lioti Cooking.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2E6D75831B3D7E650015307B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2E6D75851B3D7E650015307B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2E6D75851B3D7E650015307B /* RecipesVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecipesVC.swift; sourceTree = "<group>"; };
 		2E6D75881B3D7E650015307B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2E6D758B1B3D7E650015307B /* Gina_Lioti_Cooking.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Gina_Lioti_Cooking.xcdatamodel; sourceTree = "<group>"; };
 		2E6D758D1B3D7E650015307B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -67,6 +71,10 @@
 		2E6D75CB1B3D9D320015307B /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2E6D75CC1B3D9D320015307B /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		2E6D75D71B3DA1580015307B /* RecipeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = RecipeData.json; path = Assets.xcassets/RecipeData.json; sourceTree = "<group>"; };
+		2E6D75D91B3DA9210015307B /* RecipeInstruction+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecipeInstruction+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2E6D75DA1B3DA9210015307B /* RecipeInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeInstruction.swift; sourceTree = "<group>"; };
+		2E6D75DB1B3DA9210015307B /* RecipePhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecipePhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2E6D75DC1B3DA9210015307B /* RecipePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipePhoto.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,7 +127,7 @@
 			children = (
 				2E6D75D61B3D9D410015307B /* Assets */,
 				2E6D75831B3D7E650015307B /* AppDelegate.swift */,
-				2E6D75851B3D7E650015307B /* ViewController.swift */,
+				2E6D75851B3D7E650015307B /* RecipesVC.swift */,
 				2E6D75871B3D7E650015307B /* Main.storyboard */,
 				2E6D75D51B3D9D370015307B /* Core Data */,
 			);
@@ -156,6 +164,10 @@
 				2E6D75CB1B3D9D320015307B /* Recipe+CoreDataProperties.swift */,
 				2E6D75CA1B3D9D320015307B /* RecipeIngredients.swift */,
 				2E6D75C91B3D9D320015307B /* RecipeIngredients+CoreDataProperties.swift */,
+				2E6D75DA1B3DA9210015307B /* RecipeInstruction.swift */,
+				2E6D75D91B3DA9210015307B /* RecipeInstruction+CoreDataProperties.swift */,
+				2E6D75DC1B3DA9210015307B /* RecipePhoto.swift */,
+				2E6D75DB1B3DA9210015307B /* RecipePhoto+CoreDataProperties.swift */,
 				2E6D758A1B3D7E650015307B /* Gina_Lioti_Cooking.xcdatamodeld */,
 			);
 			name = "Core Data";
@@ -303,14 +315,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2E6D75861B3D7E650015307B /* ViewController.swift in Sources */,
+				2E6D75DE1B3DA9210015307B /* RecipeInstruction.swift in Sources */,
+				2E6D75861B3D7E650015307B /* RecipesVC.swift in Sources */,
 				2E6D75D01B3D9D320015307B /* Course.swift in Sources */,
 				2E6D75841B3D7E650015307B /* AppDelegate.swift in Sources */,
 				2E6D75CE1B3D9D320015307B /* Ingredient.swift in Sources */,
 				2E6D75D11B3D9D320015307B /* RecipeIngredients+CoreDataProperties.swift in Sources */,
 				2E6D75D31B3D9D320015307B /* Recipe+CoreDataProperties.swift in Sources */,
+				2E6D75DD1B3DA9210015307B /* RecipeInstruction+CoreDataProperties.swift in Sources */,
 				2E6D75CD1B3D9D320015307B /* Ingredient+CoreDataProperties.swift in Sources */,
 				2E6D75CF1B3D9D320015307B /* Course+CoreDataProperties.swift in Sources */,
+				2E6D75E01B3DA9210015307B /* RecipePhoto.swift in Sources */,
+				2E6D75DF1B3DA9210015307B /* RecipePhoto+CoreDataProperties.swift in Sources */,
 				2E6D75D21B3D9D320015307B /* RecipeIngredients.swift in Sources */,
 				2E6D758C1B3D7E650015307B /* Gina_Lioti_Cooking.xcdatamodeld in Sources */,
 				2E6D75D41B3D9D320015307B /* Recipe.swift in Sources */,

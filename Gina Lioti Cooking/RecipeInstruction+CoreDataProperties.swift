@@ -1,5 +1,5 @@
 //
-//  Course+CoreDataProperties.swift
+//  RecipeInstruction+CoreDataProperties.swift
 //  Gina Lioti Cooking
 //
 //  Created by Kostas on 26/06/2015.
@@ -12,9 +12,11 @@
 import Foundation
 import CoreData
 
-extension Course {
+extension RecipeInstruction {
 
-    @NSManaged var title: String?
-    @NSManaged var recipes: NSSet?
+    @NSManaged var group: String?
+    @NSManaged var instruction: String?
+    @NSManaged var imageUrl: String?
+    @NSManaged var recipe: Recipe?
 
 }

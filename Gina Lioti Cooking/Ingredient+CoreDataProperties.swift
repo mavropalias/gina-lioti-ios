@@ -15,6 +15,10 @@ import CoreData
 extension Ingredient {
 
     @NSManaged var id: NSNumber?
+    @NSManaged var title: String?
+    @NSManaged var descrip: String?
+    @NSManaged var recipeCount: NSNumber?
+    @NSManaged var slug: String?
     @NSManaged var recipeIngredients: NSSet?
 
 }

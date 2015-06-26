@@ -16,14 +16,19 @@ extension Recipe {
 
     @NSManaged var id: NSNumber?
     @NSManaged var servingsCount: NSNumber?
-    @NSManaged var descriptionText: String?
+    @NSManaged var descriptionA: String?
     @NSManaged var datePublished: NSDate?
     @NSManaged var title: String?
     @NSManaged var servingsType: String?
-    @NSManaged var prepMinutes: NSNumber?
-    @NSManaged var cookMinutes: NSNumber?
-    @NSManaged var waitMinutes: NSNumber?
+    @NSManaged var minutesPrep: NSNumber?
+    @NSManaged var minutesCook: NSNumber?
+    @NSManaged var minutesPassive: NSNumber?
+    @NSManaged var descriptionB: String?
+    @NSManaged var minutesTotal: NSNumber?
     @NSManaged var ingredients: NSSet?
     @NSManaged var courses: NSSet?
+    @NSManaged var relatedRecipes: NSSet?
+    @NSManaged var photos: NSSet?
+    @NSManaged var instructions: NSSet?
 
 }
