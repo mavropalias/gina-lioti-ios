@@ -15,10 +15,51 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="xaN-4U-hcI">
+                                <rect key="frame" x="0.0" y="0.0" width="240" height="128"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="BYZ-38-t0r" id="yYK-8W-7xd"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xaN-4U-hcI" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="2zv-oe-Kp4"/>
+                            <constraint firstItem="xaN-4U-hcI" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="UzM-YR-hYP"/>
+                            <constraint firstItem="xaN-4U-hcI" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="ap1-mT-bn9"/>
+                            <constraint firstItem="xaN-4U-hcI" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" id="wtn-EW-I25"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="xaN-4U-hcI"/>
+                            </mask>
+                            <mask key="constraints">
+                                <exclude reference="2zv-oe-Kp4"/>
+                                <exclude reference="UzM-YR-hYP"/>
+                                <exclude reference="ap1-mT-bn9"/>
+                                <exclude reference="wtn-EW-I25"/>
+                            </mask>
+                        </variation>
+                        <variation key="widthClass=compact">
+                            <mask key="subviews">
+                                <include reference="xaN-4U-hcI"/>
+                            </mask>
+                            <mask key="constraints">
+                                <include reference="2zv-oe-Kp4"/>
+                                <include reference="UzM-YR-hYP"/>
+                                <include reference="ap1-mT-bn9"/>
+                                <include reference="wtn-EW-I25"/>
+                            </mask>
+                        </variation>
                     </view>
                     <navigationItem key="navigationItem" id="aaY-Cz-Scm"/>
+                    <connections>
+                        <outlet property="tableView" destination="xaN-4U-hcI" id="xyQ-qV-nKt"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>

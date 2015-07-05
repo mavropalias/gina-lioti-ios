@@ -1,3 +1,4 @@
+
 //
 //  Recipe+CoreDataProperties.swift
 //  Gina Lioti Cooking
