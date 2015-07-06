@@ -12,6 +12,8 @@ import CoreData
 @objc(Recipe)
 class Recipe: NSManagedObject {
 
-// Insert code here to add functionality to your managed object subclass
+//    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
+//        super.init(entity: entity, insertIntoManagedObjectContext: context)
+//    }
 
 }

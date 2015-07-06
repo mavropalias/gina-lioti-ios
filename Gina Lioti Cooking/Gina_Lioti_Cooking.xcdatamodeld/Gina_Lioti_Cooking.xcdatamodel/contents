@@ -16,13 +16,14 @@
         <attribute name="datePublished" optional="YES" attributeType="Date" syncable="YES"/>
         <attribute name="descriptionA" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="descriptionB" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="id" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="id" attributeType="Integer 16" defaultValueString="0" indexed="YES" syncable="YES"/>
         <attribute name="minutesCook" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="minutesPassive" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="minutesPrep" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="minutesTotal" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="servingsCount" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="servingsType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="slug" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" spotlightIndexingEnabled="YES" syncable="YES"/>
         <relationship name="courses" toMany="YES" deletionRule="Cascade" destinationEntity="Course" inverseName="recipes" inverseEntity="Course" syncable="YES"/>
         <relationship name="ingredients" toMany="YES" deletionRule="Cascade" destinationEntity="RecipeIngredient" inverseName="recipe" inverseEntity="RecipeIngredient" syncable="YES"/>
@@ -54,11 +55,11 @@
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="photos" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <elements>
-        <element name="Recipe" positionX="-621" positionY="-135" width="128" height="283"/>
         <element name="Course" positionX="-389" positionY="-135" width="128" height="73"/>
         <element name="Ingredient" positionX="-65" positionY="5" width="128" height="133"/>
+        <element name="Recipe" positionX="-621" positionY="-135" width="128" height="300"/>
         <element name="RecipeIngredient" positionX="-389" positionY="-54" width="128" height="148"/>
-        <element name="RecipePhoto" positionX="-828" positionY="-90" width="128" height="133"/>
         <element name="RecipeInstruction" positionX="-389" positionY="104" width="128" height="103"/>
+        <element name="RecipePhoto" positionX="-828" positionY="-90" width="128" height="133"/>
     </elements>
 </model>
