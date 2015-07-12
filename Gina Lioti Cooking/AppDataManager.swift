@@ -22,7 +22,7 @@ class AppDataManager {
         (recipes, ingredients) = coreDataManager.load()
 
         if shouldFetchFromAPI() {
-            //(recipes, ingredients) = api.fetch()
+            (recipes, ingredients) = api.fetch()
         }
 
     }
