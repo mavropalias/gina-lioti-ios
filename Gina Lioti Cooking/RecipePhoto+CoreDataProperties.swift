@@ -16,7 +16,7 @@ extension RecipePhoto {
 
     @NSManaged var caption: String?
     @NSManaged var descrip: String?
-    @NSManaged var photo: NSData?
+    @NSManaged var localPath: String?
     @NSManaged var title: String?
     @NSManaged var url: String?
     @NSManaged var recipe: Recipe?

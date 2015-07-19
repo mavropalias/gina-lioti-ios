@@ -16,7 +16,6 @@ class CoreDataManager {
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let model = managedContext.persistentStoreCoordinator?.managedObjectModel
-        let substitutionVariabledDictionary = ["RECIPE_ID":1]
         let fetchRequest = model?.fetchRequestFromTemplateWithName("FetchAllRecipes", substitutionVariables: [:])
         do {
             recipes = try managedContext.executeFetchRequest(fetchRequest!) as? [Recipe]

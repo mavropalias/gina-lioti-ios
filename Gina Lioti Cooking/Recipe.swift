@@ -2,7 +2,7 @@
 //  Recipe.swift
 //  Gina Lioti Cooking
 //
-//  Created by Kostas on 26/06/2015.
+//  Created by Kostas on 19/07/2015.
 //  Copyright © 2015 gl. All rights reserved.
 //
 
@@ -12,8 +12,6 @@ import CoreData
 @objc(Recipe)
 class Recipe: NSManagedObject {
 
-//    override init(entity: NSEntityDescription, insertIntoManagedObjectContext context: NSManagedObjectContext?) {
-//        super.init(entity: entity, insertIntoManagedObjectContext: context)
-//    }
+// Insert code here to add functionality to your managed object subclass
 
 }

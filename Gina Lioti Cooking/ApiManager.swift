@@ -164,11 +164,12 @@ class ApiManager {
 
     private func photosetFromJson(photosJsonArray: Array<NSDictionary>) -> NSSet? {
         let photos:NSMutableSet = NSMutableSet()
-        guard let entity = NSEntityDescription.entityForName("RecipePhoto", inManagedObjectContext: managedObjectContext) else { return nil }
-
         for photoJson in photosJsonArray {
-            if var recipePhoto = NSEntityDescription.insertNewObjectForEntityForName("RecipePhoto", inManagedObjectContext: managedObjectContext) as? RecipePhoto {
+            if let recipePhoto = NSEntityDescription.insertNewObjectForEntityForName("RecipePhoto", inManagedObjectContext: managedObjectContext) as? RecipePhoto {
                 recipePhoto.url = photoJson.valueForKey("url") as? String
+                recipePhoto.descrip = photoJson.valueForKey("description") as? String
+                recipePhoto.caption = photoJson.valueForKey("caption") as? String
+                recipePhoto.title = photoJson.valueForKey("title") as? String
                 photos.addObject(recipePhoto)
             }
         }

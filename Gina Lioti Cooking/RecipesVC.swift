@@ -14,7 +14,17 @@ import UIKit
 import CoreData
 
 
-
+extension UIImageView {
+    public func imageFromUrl(urlString: String) {
+        if let url = NSURL(string: urlString) {
+            let request = NSURLRequest(URL: url)
+            NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
+                (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
+                self.image = UIImage(data: data!)
+            }
+        }
+    }
+}
 
 
 class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate {
@@ -110,6 +120,14 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
         let recipe = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Recipe
         cell.textLabel!.text = recipe.title
         cell.detailTextLabel!.text = recipe.servingsType
+
+        if let photoArray = recipe.photos?.allObjects {
+            if !photoArray.isEmpty {
+                let photo: RecipePhoto = photoArray[0] as! RecipePhoto
+                print(photo.url!)
+                cell.imageView!.imageFromUrl(photo.url!)
+            }
+        }
     }
 
 

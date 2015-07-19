@@ -2,7 +2,7 @@
 //  RecipePhoto.swift
 //  Gina Lioti Cooking
 //
-//  Created by Kostas on 26/06/2015.
+//  Created by Kostas on 19/07/2015.
 //  Copyright © 2015 gl. All rights reserved.
 //
 
