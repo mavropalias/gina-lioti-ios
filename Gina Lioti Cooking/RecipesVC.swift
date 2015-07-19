@@ -126,17 +126,25 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
         case .Insert:
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            guard let nip = newIndexPath else { return }
+            tableView.insertRowsAtIndexPaths([nip], withRowAnimation: UITableViewRowAnimation.Fade)
         case .Update:
-            if let cell = tableView.cellForRowAtIndexPath(indexPath!) {
+            guard let ip = indexPath else { return }
+            if let cell = tableView.cellForRowAtIndexPath(ip) {
                 configureCell(cell, atIndexPath: indexPath!)
                 tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
             }
         case .Move:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
-            tableView.insertRowsAtIndexPaths([newIndexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            guard
+                let ip = indexPath,
+                let nip = newIndexPath
+                where ip != nip
+                else { return }
+            tableView.deleteRowsAtIndexPaths([ip], withRowAnimation: UITableViewRowAnimation.Fade)
+            tableView.insertRowsAtIndexPaths([nip], withRowAnimation: UITableViewRowAnimation.Fade)
         case .Delete:
-            tableView.deleteRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+            guard let ip = indexPath else { return }
+            tableView.deleteRowsAtIndexPaths([ip], withRowAnimation: UITableViewRowAnimation.Fade)
         }
     }
 
