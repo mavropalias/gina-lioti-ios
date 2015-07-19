@@ -72,7 +72,7 @@ class ApiManager {
 
         for recipeJson in recipesJsonArray {
             guard let recipeId = recipeJson.valueForKey("id") as? NSNumber else { return }
-            var recipe = NSManagedObject(entity: entity, insertIntoManagedObjectContext: nil) as! Recipe
+            var recipe = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedObjectContext) as! Recipe
             var needToSaveRecipe = true
 
             if let localRecipe = getExistingRecipeById(recipeId) {
