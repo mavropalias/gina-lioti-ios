@@ -14,15 +14,20 @@ class AppDataManager {
     let coreDataManager = CoreDataManager()
     let userDefaultsManager = UserDefaultsManager()
     let apiSyncIntervalHours = 24
+    let printPrefix = "–––––– "
 
     var recipes: [Recipe]?
     var ingredients: [Ingredient]?
 
     init() {
+        print (printPrefix + "Init app")
         (recipes, ingredients) = coreDataManager.load()
+        print (printPrefix + "Loaded recipes from Core Data")
 
         if shouldFetchFromAPI() {
-            (recipes, ingredients) = api.fetch()
+            //(recipes, ingredients) = api.fetch()
+            print (printPrefix + "Loading recipes from API")
+            api.fetch()
         }
 
     }

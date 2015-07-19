@@ -49,6 +49,7 @@ class RecipesVC: UIViewController, UITableViewDataSource {
         title = "Recipes";
         if let dataRecipes = appDataManager.recipes {
             recipes = dataRecipes
+            title = String(dataRecipes.count) + " recipes"
         }
     }
 
@@ -57,6 +58,7 @@ class RecipesVC: UIViewController, UITableViewDataSource {
 
         if let dataRecipes = appDataManager.recipes {
             recipes = dataRecipes
+            title = String(dataRecipes.count) + " recipes"
         }
     }
 

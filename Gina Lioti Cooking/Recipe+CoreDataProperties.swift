@@ -2,7 +2,7 @@
 //  Recipe+CoreDataProperties.swift
 //  Gina Lioti Cooking
 //
-//  Created by Kostas on 05/07/2015.
+//  Created by Kostas on 19/07/2015.
 //  Copyright © 2015 gl. All rights reserved.
 //
 //  Delete this file and regenerate it using "Create NSManagedObject Subclass…"
@@ -14,6 +14,7 @@ import CoreData
 
 extension Recipe {
 
+    @NSManaged var dateModified: NSDate?
     @NSManaged var datePublished: NSDate?
     @NSManaged var descriptionA: String?
     @NSManaged var descriptionB: String?
