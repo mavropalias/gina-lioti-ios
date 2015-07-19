@@ -17,15 +17,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
 
-
     // MARK: - AppDelegate
     // =========================================================================
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Override point for customization after application launch.
+        // Set managedObjectContext in top view
         let nav = self.window!.rootViewController as! UINavigationController
         let master = nav.topViewController as! RecipesVC
         master.managedObjectContext = self.managedObjectContext
+
+        // Start appManager
+        let appManager = AppDataManager()
 
         return true
     }
