@@ -32,7 +32,6 @@
 		2E6D75DE1B3DA9210015307B /* RecipeInstruction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75DA1B3DA9210015307B /* RecipeInstruction.swift */; };
 		2E6D75DF1B3DA9210015307B /* RecipePhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75DB1B3DA9210015307B /* RecipePhoto+CoreDataProperties.swift */; };
 		2E6D75E01B3DA9210015307B /* RecipePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75DC1B3DA9210015307B /* RecipePhoto.swift */; };
-		2EBF45ED1B5BBA7E00654070 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EBF45EC1B5BBA7E00654070 /* Recipe+CoreDataProperties.swift */; };
 		2EFBF87F1B499572009C34BB /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EFBF87E1B499572009C34BB /* Recipe+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
@@ -97,7 +96,6 @@
 		2E6D75DA1B3DA9210015307B /* RecipeInstruction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeInstruction.swift; sourceTree = "<group>"; };
 		2E6D75DB1B3DA9210015307B /* RecipePhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecipePhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2E6D75DC1B3DA9210015307B /* RecipePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipePhoto.swift; sourceTree = "<group>"; };
-		2EBF45EC1B5BBA7E00654070 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Recipe+CoreDataProperties.swift"; path = "Gina Lioti Cooking/Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2EFBF87E1B499572009C34BB /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -140,7 +138,6 @@
 		2E6D75771B3D7E650015307B = {
 			isa = PBXGroup;
 			children = (
-				2EBF45EC1B5BBA7E00654070 /* Recipe+CoreDataProperties.swift */,
 				2E6D75821B3D7E650015307B /* Gina Lioti Cooking */,
 				2E6D759A1B3D7E650015307B /* Gina Lioti CookingTests */,
 				2E6D75A51B3D7E650015307B /* Gina Lioti CookingUITests */,
@@ -358,7 +355,6 @@
 				2E6D75861B3D7E650015307B /* RecipesVC.swift in Sources */,
 				2E23FB2C1B52FFF900EDBB68 /* CoreDataManager.swift in Sources */,
 				2E6D75D01B3D9D320015307B /* Course.swift in Sources */,
-				2EBF45ED1B5BBA7E00654070 /* Recipe+CoreDataProperties.swift in Sources */,
 				2E6D75841B3D7E650015307B /* AppDelegate.swift in Sources */,
 				2E6D75CE1B3D9D320015307B /* Ingredient.swift in Sources */,
 				2E6D75D11B3D9D320015307B /* RecipeIngredients+CoreDataProperties.swift in Sources */,

@@ -91,6 +91,8 @@ class ApiManager {
 
             if let title = recipeJson.valueForKey("title") as? String {
                 recipe.title = decodeHtmlEncodedString(title)
+            } else {
+                recipe.title = ""
             }
             recipe.id = recipeJson.valueForKey("id") as? NSNumber
             recipe.slug = recipeJson.valueForKey("slug") as? String
@@ -108,10 +110,10 @@ class ApiManager {
 
             // Save recipe
             if needToSaveRecipe {
-                print("+++ Saving new recipe \(recipe.title)")
+                print("+++ Saving new recipe \(recipe.title!)")
                 managedObjectContext.insertObject(recipe)
             } else {
-                print(">>> Updating recipe \(recipe.title)")
+                print(">>> Updating recipe \(recipe.title!)")
                 managedObjectContext.refreshObject(recipe, mergeChanges: true)
             }
 
