@@ -55,13 +55,13 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		2E2EE41B1B404E190069648A /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
+			buildActionMask = 8;
 			dstPath = "";
 			dstSubfolderSpec = 7;
 			files = (
 				2E2EE41C1B404E350069648A /* RecipeData.json in CopyFiles */,
 			);
-			runOnlyForDeploymentPostprocessing = 0;
+			runOnlyForDeploymentPostprocessing = 1;
 		};
 /* End PBXCopyFilesBuildPhase section */
 

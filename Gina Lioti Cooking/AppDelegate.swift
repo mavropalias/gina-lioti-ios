@@ -22,7 +22,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // =========================================================================
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Update recipes from server
+        // Override point for customization after application launch.
+        let nav = self.window!.rootViewController as! UINavigationController
+        let master = nav.topViewController as! RecipesVC
+        master.managedObjectContext = self.managedObjectContext
 
         return true
     }
@@ -100,6 +103,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let coordinator = self.persistentStoreCoordinator
         var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = coordinator
+        managedObjectContext.undoManager = nil
         return managedObjectContext
     }()
 
@@ -132,89 +136,89 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // =========================================================================
 
     func loadJson() {
-        let jsonURL = NSBundle.mainBundle().URLForResource("RecipeData", withExtension: "json")!
-        let jsonData = NSData(contentsOfURL: jsonURL)
-        var jsonDictionary = [:]
+//        let jsonURL = NSBundle.mainBundle().URLForResource("RecipeData", withExtension: "json")!
+//        let jsonData = NSData(contentsOfURL: jsonURL)
+//        var jsonDictionary = [:]
+//
+//        do {
+//            jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
+//        } catch {
+//
+//        }
+//
+//        let recipesArray = jsonDictionary.valueForKey("recipes") as! Array<NSDictionary>
+//        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+//
+//        for recipeJson in recipesArray {
+//            let entity = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedObjectContext)
+//            var recipe = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: nil) as! Recipe
+//
+//            // Search for matching local recipe
+//            let fetchRequest = NSFetchRequest(entityName: "Recipe")
+//            let attributeValue = recipeJson.valueForKey("id") as? NSNumber;
+//            let predicate = NSPredicate(format: "%K == %@", "id", attributeValue!);
+//            fetchRequest.predicate = predicate
+//
+//            var needToSaveRecipe = true
+//            do {
+//                let localRecipe:Array<Recipe> = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Recipe]
+//                if (localRecipe.count > 0) {
+//                    recipe = localRecipe[0]
+//                    needToSaveRecipe = false
+//                }
+//            } catch {
+//                print("### ERROR 1")
+//            }
+//
+//            // recipe date
+//            let dateString = recipeJson.valueForKey("date") as? String
+//            let dateFormatter = NSDateFormatter()
+//            dateFormatter.dateFormat = "YYYY-MM-dd hh:mm:ss"
+//            if let date = dateFormatter.dateFromString(dateString!) {
+//                recipe.datePublished = date
+//            }
+//
+//            // recipe photos
+//            var photos:NSSet = NSSet()
+//            let photosJsonArray = recipeJson.valueForKey("photos") as! Array<NSDictionary>
+//            for photoJson in photosJsonArray {
+//                let entityDescription = NSEntityDescription.entityForName("RecipePhoto",
+//                    inManagedObjectContext: managedObjectContext)
+//                let recipePhoto = RecipePhoto(entity: entityDescription!,
+//                    insertIntoManagedObjectContext: nil)
+//
+//                recipePhoto.url = photoJson.valueForKey("url") as? String
+//                photos.setByAddingObject(recipePhoto)
+//            }
+//
+//            recipe.id = recipeJson.valueForKey("id") as? NSNumber
+//            recipe.title = recipeJson.valueForKey("title") as? String
+//            recipe.slug = recipeJson.valueForKey("slug") as? String
+//            recipe.descriptionA = recipeJson.valueForKey("description") as? String
+//            recipe.descriptionB = recipeJson.valueForKey("description2") as? String
+//            recipe.minutesCook = 0
+//            recipe.minutesPassive = 0
+//            recipe.minutesPrep = 0
+//            recipe.minutesTotal = 0
+//            recipe.servingsCount = 0
+//            recipe.servingsType = recipeJson.valueForKey("servings") as? String
+//            recipe.photos = photos
+//
+////            print(recipe.title)
+//
+//            // Save recipe
+//            if needToSaveRecipe {
+//                print("Saving new recipe \(recipe.title)")
+//                managedObjectContext.insertObject(recipe)
+//            }
+//
+//            do {
+//                try managedObjectContext.save()
+//            } catch {
+//                print("### ERROR 2")
+//            }
+//        }
 
-        do {
-            jsonDictionary = try NSJSONSerialization.JSONObjectWithData(jsonData!, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
-        } catch {
-
-        }
-
-        let recipesArray = jsonDictionary.valueForKey("recipes") as! Array<NSDictionary>
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
-
-        for recipeJson in recipesArray {
-            let entity = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedObjectContext)
-            var recipe = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: nil) as! Recipe
-
-            // Search for matching local recipe
-            let fetchRequest = NSFetchRequest(entityName: "Recipe")
-            let attributeValue = recipeJson.valueForKey("id") as? NSNumber;
-            let predicate = NSPredicate(format: "%K == %@", "id", attributeValue!);
-            fetchRequest.predicate = predicate
-
-            var needToSaveRecipe = true
-            do {
-                let localRecipe:Array<Recipe> = try self.managedObjectContext.executeFetchRequest(fetchRequest) as! [Recipe]
-                if (localRecipe.count > 0) {
-                    recipe = localRecipe[0]
-                    needToSaveRecipe = false
-                }
-            } catch {
-                print("### ERROR 1")
-            }
-
-            // recipe date
-            let dateString = recipeJson.valueForKey("date") as? String
-            let dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "YYYY-MM-dd hh:mm:ss"
-            if let date = dateFormatter.dateFromString(dateString!) {
-                recipe.datePublished = date
-            }
-
-            // recipe photos
-            var photos:NSSet = NSSet()
-            let photosJsonArray = recipeJson.valueForKey("photos") as! Array<NSDictionary>
-            for photoJson in photosJsonArray {
-                let entityDescription = NSEntityDescription.entityForName("RecipePhoto",
-                    inManagedObjectContext: managedObjectContext)
-                let recipePhoto = RecipePhoto(entity: entityDescription!,
-                    insertIntoManagedObjectContext: nil)
-
-                recipePhoto.url = photoJson.valueForKey("url") as? String
-                photos.setByAddingObject(recipePhoto)
-            }
-
-            recipe.id = recipeJson.valueForKey("id") as? NSNumber
-            recipe.title = recipeJson.valueForKey("title") as? String
-            recipe.slug = recipeJson.valueForKey("slug") as? String
-            recipe.descriptionA = recipeJson.valueForKey("description") as? String
-            recipe.descriptionB = recipeJson.valueForKey("description2") as? String
-            recipe.minutesCook = 0
-            recipe.minutesPassive = 0
-            recipe.minutesPrep = 0
-            recipe.minutesTotal = 0
-            recipe.servingsCount = 0
-            recipe.servingsType = recipeJson.valueForKey("servings") as? String
-            recipe.photos = photos
-
-//            print(recipe.title)
-
-            // Save recipe
-            if needToSaveRecipe {
-                print("Saving new recipe \(recipe.title)")
-                managedObjectContext.insertObject(recipe)
-            }
-
-            do {
-                try managedObjectContext.save()
-            } catch {
-                print("### ERROR 2")
-            }
-        }
-        
     }
 }
 

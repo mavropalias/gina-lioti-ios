@@ -15,9 +15,10 @@ class CoreDataManager {
         var recipes: [Recipe]? = nil
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Recipe")
+        let model = managedContext.persistentStoreCoordinator?.managedObjectModel
+        let fetchRequest = model?.fetchRequestFromTemplateWithName("FetchAllRecipes", substitutionVariables: [:])
         do {
-            recipes = try managedContext.executeFetchRequest(fetchRequest) as? [Recipe]
+            recipes = try managedContext.executeFetchRequest(fetchRequest!) as? [Recipe]
             return (recipes, nil)
         } catch {
             return (nil, nil)

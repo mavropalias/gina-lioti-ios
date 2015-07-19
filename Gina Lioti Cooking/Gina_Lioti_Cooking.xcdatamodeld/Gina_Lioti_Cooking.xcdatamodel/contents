@@ -55,10 +55,11 @@
         <attribute name="url" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="photos" inverseEntity="Recipe" syncable="YES"/>
     </entity>
+    <fetchRequest name="FetchAllRecipes" entity="Recipe"/>
     <elements>
         <element name="Course" positionX="-389" positionY="-135" width="128" height="73"/>
         <element name="Ingredient" positionX="-65" positionY="5" width="128" height="133"/>
-        <element name="Recipe" positionX="-621" positionY="-135" width="128" height="315"/>
+        <element name="Recipe" positionX="-621" positionY="-135" width="128" height="313"/>
         <element name="RecipeIngredient" positionX="-389" positionY="-54" width="128" height="148"/>
         <element name="RecipeInstruction" positionX="-389" positionY="104" width="128" height="103"/>
         <element name="RecipePhoto" positionX="-828" positionY="-90" width="128" height="133"/>

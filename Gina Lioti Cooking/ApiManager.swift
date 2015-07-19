@@ -12,6 +12,9 @@ import UIKit
 
 class ApiManager {
     let url: String
+    lazy var managedObjectContext = {
+        return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
+    }()
     let printPrefix = "–––––– "
 
     init() {
@@ -34,7 +37,6 @@ class ApiManager {
 
     func parseApiData(data: NSData) -> ([Recipe], [Ingredient]) {
         var recipesArray = Array<NSDictionary>()
-        let managedObjectContext = (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
 
         do {
             let jsonDictionary = try NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions.MutableContainers) as! NSDictionary
