@@ -20,7 +20,9 @@ extension UIImageView {
             let request = NSURLRequest(URL: url)
             NSURLConnection.sendAsynchronousRequest(request, queue: NSOperationQueue.mainQueue()) {
                 (response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                self.image = UIImage(data: data!)
+                if let imageData = data {
+                    self.image = UIImage(data: imageData)
+                }
             }
         }
     }
@@ -88,14 +90,6 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
         title = "Recipes";
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-    }
-
 
 
 
@@ -121,13 +115,12 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
         cell.textLabel!.text = recipe.title
         cell.detailTextLabel!.text = recipe.servingsType
 
-        if let photoArray = recipe.photos?.allObjects {
-            if !photoArray.isEmpty {
-                let photo: RecipePhoto = photoArray[0] as! RecipePhoto
-                print(photo.url!)
-                cell.imageView!.imageFromUrl(photo.url!)
-            }
-        }
+//        if let photoArray = recipe.photos?.allObjects {
+//            if !photoArray.isEmpty {
+//                let photo: RecipePhoto = photoArray[0] as! RecipePhoto
+////                cell.imageView!.imageFromUrl(photo.url!)
+//            }
+//        }
     }
 
 

@@ -27,7 +27,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         master.managedObjectContext = self.managedObjectContext
 
         // Init appManager
-//        let _ = AppDataManager()
+        let _ = AppDataManager()
 
         return true
     }

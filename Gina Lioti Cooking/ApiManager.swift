@@ -41,15 +41,16 @@ class ApiManager {
     // fetch
     func fetch() {
         let fetchUrl = NSURL(string: url)!
+        let task = NSURLSession.sharedSession().dataTaskWithURL(fetchUrl) {(data, response, error) in
+            if let gotData = data {
+                self.parseApiData(gotData)
+            }
+        }
+        task?.resume()
 
         app.backgroundThread(
             background: {
-                let task = NSURLSession.sharedSession().dataTaskWithURL(fetchUrl) {(data, response, error) in
-                    if let gotData = data {
-                        self.parseApiData(gotData)
-                    }
-                }
-                task?.resume()
+
             },
             completion: {}
         );
@@ -68,21 +69,20 @@ class ApiManager {
 
         // Parse JSON recipe array
         var recipes = [Recipe]()
+
         guard let entity = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedObjectContext) else { return }
 
         for recipeJson in recipesJsonArray {
             guard let recipeId = recipeJson.valueForKey("id") as? NSNumber else { return }
-            var recipe = NSManagedObject(entity: entity, insertIntoManagedObjectContext: managedObjectContext) as! Recipe
+            var recipe = NSManagedObject(entity: entity, insertIntoManagedObjectContext: nil) as! Recipe
             var needToSaveRecipe = true
 
             if let localRecipe = getExistingRecipeById(recipeId) {
                 recipe = localRecipe
                 needToSaveRecipe = false
+            } else {
+                recipe.id = recipeId
             }
-
-            // Recipe properties
-            // -----------------------------------------------------------------
-            recipe.id = recipeId
 
             if let title = recipeJson.valueForKey("title") as? String {
                 recipe.title = decodeHtmlEncodedString(title)
@@ -93,9 +93,9 @@ class ApiManager {
             recipe.datePublished = dateFromString(recipeJson.valueForKey("date") as! String)
             recipe.dateModified = dateFromString(recipeJson.valueForKey("modified") as! String)
 
-            if let photos = recipeJson.valueForKey("attachments") as? Array<NSDictionary> {
-                recipe.photos = photosetFromJson(photos)
-            }
+//            if let photos = recipeJson.valueForKey("attachments") as? Array<NSDictionary> {
+//                recipe.photos = photosetFromJson(photos)
+//            }
 
             recipe.slug = recipeJson.valueForKey("slug") as? String
             recipe.descriptionA = recipeJson.valueForKey("description") as? String
@@ -162,14 +162,47 @@ class ApiManager {
         }
     }
 
+    private func getExistingPhotoByUrl(photoUrl: String) -> RecipePhoto? {
+        let fetchRequest = NSFetchRequest(entityName: "RecipePhoto")
+        let predicate = NSPredicate(format: "%K == %@", "url", photoUrl);
+        fetchRequest.predicate = predicate
+
+        do {
+            let localPhoto:Array<RecipePhoto> = try managedObjectContext.executeFetchRequest(fetchRequest) as! [RecipePhoto]
+            if (localPhoto.count > 0) {
+                return localPhoto[0]
+            } else {
+                return nil
+            }
+        } catch {
+            print("### ERROR 1")
+            return nil
+        }
+    }
+
     private func photosetFromJson(photosJsonArray: Array<NSDictionary>) -> NSSet? {
         let photos:NSMutableSet = NSMutableSet()
         for photoJson in photosJsonArray {
-            if let recipePhoto = NSEntityDescription.insertNewObjectForEntityForName("RecipePhoto", inManagedObjectContext: managedObjectContext) as? RecipePhoto {
-                recipePhoto.url = photoJson.valueForKey("url") as? String
+            guard let entity = NSEntityDescription.entityForName("RecipePhoto", inManagedObjectContext: managedObjectContext) else { break }
+            if var recipePhoto = NSManagedObject(entity: entity, insertIntoManagedObjectContext: nil) as? RecipePhoto {
+                guard let photoUrl = photoJson.valueForKey("url") as? String else { break }
+                var needToSavePhoto = true
+                if let localPhoto = getExistingPhotoByUrl(photoUrl) {
+                    recipePhoto = localPhoto
+                    needToSavePhoto = false
+                } else {
+                    recipePhoto.url = photoJson.valueForKey("url") as? String
+                }
+
                 recipePhoto.descrip = photoJson.valueForKey("description") as? String
                 recipePhoto.caption = photoJson.valueForKey("caption") as? String
                 recipePhoto.title = photoJson.valueForKey("title") as? String
+
+                if needToSavePhoto {
+                    managedObjectContext.insertObject(recipePhoto)
+                } else {
+                    managedObjectContext.refreshObject(recipePhoto, mergeChanges: true)
+                }
                 photos.addObject(recipePhoto)
             }
         }
