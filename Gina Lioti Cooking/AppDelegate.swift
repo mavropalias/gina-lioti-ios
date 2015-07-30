@@ -31,11 +31,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let _ = AppDataManager()
 
         // Test AF
-        let manager = AFHTTPRequestOperationManager()
-        manager.GET("http://httpbin.org/get", parameters: nil, success: {(operation, responseObject) -> Void in
-            print(responseObject)
-            print("success")
-        }, failure: nil)
+//        let manager = AFHTTPRequestOperationManager()
+//        manager.GET("http://httpbin.org/get", parameters: nil, success: {(operation, responseObject) -> Void in
+//            print(responseObject)
+//            print("success")
+//        }, failure: nil)
+
+
         return true
     }
 
