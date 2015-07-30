@@ -19,12 +19,12 @@ class ApiManager {
 // MARK: - Class properties
 // =============================================================================
 
-    let url: String
+    let url = "http://ginalioti.com/api/get_posts"
     let app = (UIApplication.sharedApplication().delegate as! AppDelegate)
     lazy var managedObjectContext = {
         return (UIApplication.sharedApplication().delegate as! AppDelegate).managedObjectContext
     }()
-    let printPrefix = "–––––– "
+    let printPrefix: String = "–––––– "
 
 
 
@@ -32,11 +32,6 @@ class ApiManager {
 
 // MARK: - Class methods
 // =============================================================================
-
-    // init
-    init() {
-        url = "http://ginalioti.com/api/get_posts"
-    }
 
     // fetch
     func fetch() {
@@ -46,7 +41,7 @@ class ApiManager {
                 self.parseApiData(gotData)
             }
         }
-        task?.resume()
+        task.resume()
 
         app.backgroundThread(
             background: {
@@ -93,13 +88,14 @@ class ApiManager {
             recipe.datePublished = dateFromString(recipeJson.valueForKey("date") as! String)
             recipe.dateModified = dateFromString(recipeJson.valueForKey("modified") as! String)
 
-//            if let photos = recipeJson.valueForKey("attachments") as? Array<NSDictionary> {
-//                recipe.photos = photosetFromJson(photos)
-//            }
+            if let photos = recipeJson.valueForKey("attachments") as? Array<NSDictionary> {
+                //recipe.photos = photosetFromJson(photos, forRecipe: recipe)
+                insertRecipePhotosToCoreDataFromJson(photos, forRecipe: recipe)
+            }
 
             recipe.slug = recipeJson.valueForKey("slug") as? String
             recipe.descriptionA = recipeJson.valueForKey("description") as? String
-            recipe.descriptionB = recipeJson.valueForKey("description2") as? String
+            recipe.descriptionB = decodeHtmlEncodedString((recipeJson.valueForKey("content") as? String)!)
             recipe.minutesCook = 0
             recipe.minutesPassive = 0
             recipe.minutesPrep = 0
@@ -170,7 +166,7 @@ class ApiManager {
         do {
             let localPhoto:Array<RecipePhoto> = try managedObjectContext.executeFetchRequest(fetchRequest) as! [RecipePhoto]
             if (localPhoto.count > 0) {
-                return localPhoto[0]
+                return localPhoto[0] as RecipePhoto
             } else {
                 return nil
             }
@@ -180,18 +176,21 @@ class ApiManager {
         }
     }
 
-    private func photosetFromJson(photosJsonArray: Array<NSDictionary>) -> NSSet? {
-        let photos:NSMutableSet = NSMutableSet()
+    private func insertRecipePhotosToCoreDataFromJson(photosJsonArray: Array<NSDictionary>, forRecipe recipe: Recipe) {
         for photoJson in photosJsonArray {
             guard let entity = NSEntityDescription.entityForName("RecipePhoto", inManagedObjectContext: managedObjectContext) else { break }
             if var recipePhoto = NSManagedObject(entity: entity, insertIntoManagedObjectContext: nil) as? RecipePhoto {
                 guard let photoUrl = photoJson.valueForKey("url") as? String else { break }
+                print("Parsing photo \(photoUrl)")
                 var needToSavePhoto = true
                 if let localPhoto = getExistingPhotoByUrl(photoUrl) {
+                    print("– Photo exists locally")
                     recipePhoto = localPhoto
                     needToSavePhoto = false
                 } else {
+                    print("– Photo is new")
                     recipePhoto.url = photoJson.valueForKey("url") as? String
+                    recipePhoto.recipe = recipe
                 }
 
                 recipePhoto.descrip = photoJson.valueForKey("description") as? String
@@ -199,15 +198,21 @@ class ApiManager {
                 recipePhoto.title = photoJson.valueForKey("title") as? String
 
                 if needToSavePhoto {
+                    print("– Inserting photo object")
                     managedObjectContext.insertObject(recipePhoto)
                 } else {
+                    print("– Refreshing photo object")
                     managedObjectContext.refreshObject(recipePhoto, mergeChanges: true)
                 }
-                photos.addObject(recipePhoto)
+
+                do {
+                    print("– Saving photo context")
+                    try managedObjectContext.save()
+                } catch {
+                    print("### ERROR 3")
+                }
             }
         }
-
-        return NSSet(set: photos)
     }
 
     private func decodeHtmlEncodedString(html: String) -> String {

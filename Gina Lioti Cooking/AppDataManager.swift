@@ -19,7 +19,7 @@ class AppDataManager {
     init() {
         if shouldFetchFromAPI() {
             print (printPrefix + "Loading recipes from API")
-            api.fetch()
+            //api.fetch()
         }
 
     }

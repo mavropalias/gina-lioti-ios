@@ -113,14 +113,14 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
     func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
         let recipe = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Recipe
         cell.textLabel!.text = recipe.title
-        cell.detailTextLabel!.text = recipe.servingsType
+        cell.detailTextLabel!.text = "\(recipe.photos?.count) photos"
 
-//        if let photoArray = recipe.photos?.allObjects {
-//            if !photoArray.isEmpty {
-//                let photo: RecipePhoto = photoArray[0] as! RecipePhoto
-////                cell.imageView!.imageFromUrl(photo.url!)
-//            }
-//        }
+        if let photoArray = recipe.photos?.allObjects {
+            if !photoArray.isEmpty {
+                let photo: RecipePhoto = photoArray[0] as! RecipePhoto
+                cell.imageView!.imageFromUrl(photo.url!)
+            }
+        }
     }
 
 

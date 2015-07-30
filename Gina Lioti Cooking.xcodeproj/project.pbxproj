@@ -21,6 +21,7 @@
 		2E6D759C1B3D7E650015307B /* Gina_Lioti_CookingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D759B1B3D7E650015307B /* Gina_Lioti_CookingTests.swift */; };
 		2E6D75A71B3D7E650015307B /* Gina_Lioti_CookingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75A61B3D7E650015307B /* Gina_Lioti_CookingUITests.swift */; };
 		2E6D75D81B3DA1580015307B /* RecipeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E6D75D71B3DA1580015307B /* RecipeData.json */; };
+		2E8479811B6AD7FE00E99F4B /* Libraries in Resources */ = {isa = PBXBuildFile; fileRef = 2E8479801B6AD7FE00E99F4B /* Libraries */; };
 		2EE61CEC1B5C292500E57D30 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE61CE01B5C292500E57D30 /* Recipe+CoreDataProperties.swift */; };
 		2EE61CED1B5C292500E57D30 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE61CE11B5C292500E57D30 /* Recipe.swift */; };
 		2EE61CEE1B5C292500E57D30 /* RecipePhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE61CE21B5C292500E57D30 /* RecipePhoto+CoreDataProperties.swift */; };
@@ -85,6 +86,8 @@
 		2E6D75A61B3D7E650015307B /* Gina_Lioti_CookingUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gina_Lioti_CookingUITests.swift; sourceTree = "<group>"; };
 		2E6D75A81B3D7E650015307B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E6D75D71B3DA1580015307B /* RecipeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = RecipeData.json; path = Assets.xcassets/RecipeData.json; sourceTree = "<group>"; };
+		2E8479801B6AD7FE00E99F4B /* Libraries */ = {isa = PBXFileReference; lastKnownFileType = folder; path = Libraries; sourceTree = "<group>"; };
+		2E8479821B6AD8CE00E99F4B /* Gina_Lioti_Cooking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gina_Lioti_Cooking-Bridging-Header.h"; sourceTree = "<group>"; };
 		2EE61CE01B5C292500E57D30 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2EE61CE11B5C292500E57D30 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		2EE61CE21B5C292500E57D30 /* RecipePhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecipePhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -159,9 +162,11 @@
 		2E6D75821B3D7E650015307B /* Gina Lioti Cooking */ = {
 			isa = PBXGroup;
 			children = (
+				2E8479801B6AD7FE00E99F4B /* Libraries */,
 				2E23FB261B52E51700EDBB68 /* API */,
 				2E6D75D61B3D9D410015307B /* Assets */,
 				2E6D75831B3D7E650015307B /* AppDelegate.swift */,
+				2E8479821B6AD8CE00E99F4B /* Gina_Lioti_Cooking-Bridging-Header.h */,
 				2E6D75851B3D7E650015307B /* RecipesVC.swift */,
 				2E6D75871B3D7E650015307B /* Main.storyboard */,
 				2E6D75D51B3D9D370015307B /* Core Data */,
@@ -330,6 +335,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2E8479811B6AD7FE00E99F4B /* Libraries in Resources */,
 				2E6D75911B3D7E650015307B /* LaunchScreen.storyboard in Resources */,
 				2E6D75D81B3DA1580015307B /* RecipeData.json in Resources */,
 				2E6D758E1B3D7E650015307B /* Assets.xcassets in Resources */,
@@ -352,10 +358,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		2E6D757C1B3D7E650015307B /* Sources */ = {
@@ -523,12 +525,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = "Gina Lioti Cooking/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = $inherited;
 				PRODUCT_BUNDLE_IDENTIFIER = "gl.Gina-Lioti-Cooking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gina Lioti Cooking/Gina_Lioti_Cooking-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -539,12 +543,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				DEFINES_MODULE = NO;
+				DEFINES_MODULE = YES;
 				INFOPLIST_FILE = "Gina Lioti Cooking/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.3;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				OTHER_LDFLAGS = $inherited;
 				PRODUCT_BUNDLE_IDENTIFIER = "gl.Gina-Lioti-Cooking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gina Lioti Cooking/Gina_Lioti_Cooking-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
