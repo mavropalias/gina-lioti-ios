@@ -121,28 +121,26 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
 
                 let photoUrl = photo.url!
                 let extensionIndex = advance(photoUrl.endIndex, -4)
-                let baseImagePath = photoUrl.substringToIndex(extensionIndex)
-                let image = "\(baseImagePath)-1120x630.jpg"
+                let baseImagePath = photoUrl.substringToIndex(extensionIndex).lowercaseString
+                let image = "\(baseImagePath)-1200x630.jpg"
 
                 cell.imageView!.image = nil
 
-                if (image != "") {
-                    let image_url = NSURL(string: image)
-                    let url_request = NSURLRequest(URL: image_url!)
-                    let placeholder = UIImage(named: "no_photo")
-                    cell.imageView!.setImageWithURLRequest(url_request, placeholderImage: placeholder, success: { [weak cell] (request:NSURLRequest!,response:NSHTTPURLResponse!, image:UIImage!) -> Void in
+                let image_url = NSURL(string: image)
+                let url_request = NSURLRequest(URL: image_url!)
+                let placeholder = UIImage(named: "no_photo")
+                cell.imageView!.setImageWithURLRequest(url_request, placeholderImage: placeholder, success: { [weak cell] (request:NSURLRequest!,response:NSHTTPURLResponse!, image:UIImage!) -> Void in
+                    if let cell_for_image = cell {
+                        cell_for_image.imageView!.image = image
+                        cell_for_image.setNeedsLayout()
+                    }
+                    }, failure: { [weak cell]
+                        (request:NSURLRequest!,response:NSHTTPURLResponse!, error:NSError!) -> Void in
                         if let cell_for_image = cell {
-                            cell_for_image.imageView!.image = image
+                            cell_for_image.imageView!.image = nil
                             cell_for_image.setNeedsLayout()
                         }
-                        }, failure: { [weak cell]
-                            (request:NSURLRequest!,response:NSHTTPURLResponse!, error:NSError!) -> Void in
-                            if let cell_for_image = cell {
-                                cell_for_image.imageView!.image = nil
-                                cell_for_image.setNeedsLayout()
-                            }
-                        })
-                }
+                    })
             }
         }
     }
