@@ -29,7 +29,7 @@ extension UIImageView {
 }
 
 
-class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsControllerDelegate {
+class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, NSFetchedResultsControllerDelegate {
 
 
 
@@ -38,6 +38,8 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
 // MARK: Class properties
 // =============================================================================
 
+    var cellWidth: CGFloat = 600.0
+    var cellHeight: CGFloat = 200.0
     var managedObjectContext: NSManagedObjectContext?
     var fetchedResultsController: NSFetchedResultsController {
         // return if already initialized
@@ -76,7 +78,7 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
 // MARK: IBOutlets
 // =============================================================================
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var collectionView: UICollectionView!
 
 
 
@@ -90,30 +92,52 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
         title = "Recipes";
     }
 
+    override func viewWillAppear(animated: Bool) {
+        cellWidth = self.view.frame.size.width
+        cellHeight = self.view.frame.size.height
+    }
+
+    override func willRotateToInterfaceOrientation(toInterfaceOrientation: UIInterfaceOrientation, duration: NSTimeInterval) {
+        cellWidth = self.view.frame.size.height
+        cellHeight = self.view.frame.size.width
+        collectionView.reloadData()
+    }
 
 
 
 
-// MARK: UITableViewDataSource
+
+// MARK: UICollectionViewDelegateFlowLayout
 // =============================================================================
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
+        return CGSizeMake(cellWidth, cellHeight / 3)
+    }
+
+
+
+
+
+// MARK: UICollectionViewDataSource
+// =============================================================================
+
+    func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         let info = fetchedResultsController.sections![section] as NSFetchedResultsSectionInfo
         return info.numberOfObjects
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("recipeCell", forIndexPath: indexPath) as UITableViewCell
+    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! RecipeCollectionViewCell
         self.configureCell(cell, atIndexPath: indexPath)
         return cell
     }
 
     /* helper method to configure a `UITableViewCell`
     ask `NSFetchedResultsController` for the model */
-    func configureCell(cell: UITableViewCell, atIndexPath indexPath: NSIndexPath) {
+    func configureCell(cell: RecipeCollectionViewCell, atIndexPath indexPath: NSIndexPath) {
         let recipe = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Recipe
-        cell.textLabel!.text = recipe.title
-        cell.detailTextLabel!.text = "\(recipe.photos?.count) photos"
+        cell.titleLabel.text = recipe.title
+        //cell.detailTextLabel!.text = "\(recipe.photos?.count) photos"
 
         if let photoArray = recipe.photos?.allObjects {
             if !photoArray.isEmpty {
@@ -153,19 +177,19 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
 // =============================================================================
 
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
-        tableView.beginUpdates()
+
     }
 
     func controller(controller: NSFetchedResultsController, didChangeObject anObject: NSManagedObject, atIndexPath indexPath: NSIndexPath?, forChangeType type: NSFetchedResultsChangeType, newIndexPath: NSIndexPath?) {
         switch type {
         case .Insert:
             guard let nip = newIndexPath else { return }
-            tableView.insertRowsAtIndexPaths([nip], withRowAnimation: UITableViewRowAnimation.Fade)
+            collectionView.insertItemsAtIndexPaths([nip])
         case .Update:
             guard let ip = indexPath else { return }
-            if let cell = tableView.cellForRowAtIndexPath(ip) {
+            if let cell = collectionView.cellForItemAtIndexPath(ip) as? RecipeCollectionViewCell {
                 configureCell(cell, atIndexPath: indexPath!)
-                tableView.reloadRowsAtIndexPaths([indexPath!], withRowAnimation: UITableViewRowAnimation.Fade)
+                collectionView.reloadItemsAtIndexPaths([indexPath!])
             }
         case .Move:
             guard
@@ -173,16 +197,16 @@ class RecipesVC: UIViewController, UITableViewDataSource, NSFetchedResultsContro
                 let nip = newIndexPath
                 where ip != nip
                 else { return }
-            tableView.deleteRowsAtIndexPaths([ip], withRowAnimation: UITableViewRowAnimation.Fade)
-            tableView.insertRowsAtIndexPaths([nip], withRowAnimation: UITableViewRowAnimation.Fade)
+            collectionView.deleteItemsAtIndexPaths([ip])
+            collectionView.insertItemsAtIndexPaths([nip])
         case .Delete:
             guard let ip = indexPath else { return }
-            tableView.deleteRowsAtIndexPaths([ip], withRowAnimation: UITableViewRowAnimation.Fade)
+            collectionView.deleteItemsAtIndexPaths([ip])
         }
     }
 
     func controllerDidChangeContent(controller: NSFetchedResultsController) {
-        tableView.endUpdates()
+//        tableView.endUpdates()
     }
 
 

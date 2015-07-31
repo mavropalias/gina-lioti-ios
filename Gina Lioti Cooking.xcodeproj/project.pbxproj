@@ -22,6 +22,7 @@
 		2E6D759C1B3D7E650015307B /* Gina_Lioti_CookingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D759B1B3D7E650015307B /* Gina_Lioti_CookingTests.swift */; };
 		2E6D75A71B3D7E650015307B /* Gina_Lioti_CookingUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E6D75A61B3D7E650015307B /* Gina_Lioti_CookingUITests.swift */; };
 		2E6D75D81B3DA1580015307B /* RecipeData.json in Resources */ = {isa = PBXBuildFile; fileRef = 2E6D75D71B3DA1580015307B /* RecipeData.json */; };
+		2EB4AE901B6B041300C7C7FB /* RecipeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EB4AE8F1B6B041300C7C7FB /* RecipeCollectionViewCell.swift */; };
 		2EE61CEC1B5C292500E57D30 /* Recipe+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE61CE01B5C292500E57D30 /* Recipe+CoreDataProperties.swift */; };
 		2EE61CED1B5C292500E57D30 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE61CE11B5C292500E57D30 /* Recipe.swift */; };
 		2EE61CEE1B5C292500E57D30 /* RecipePhoto+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2EE61CE21B5C292500E57D30 /* RecipePhoto+CoreDataProperties.swift */; };
@@ -87,6 +88,7 @@
 		2E6D75A81B3D7E650015307B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2E6D75D71B3DA1580015307B /* RecipeData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; name = RecipeData.json; path = Assets.xcassets/RecipeData.json; sourceTree = "<group>"; };
 		2E8479821B6AD8CE00E99F4B /* Gina_Lioti_Cooking-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Gina_Lioti_Cooking-Bridging-Header.h"; sourceTree = "<group>"; };
+		2EB4AE8F1B6B041300C7C7FB /* RecipeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeCollectionViewCell.swift; sourceTree = "<group>"; };
 		2EE61CE01B5C292500E57D30 /* Recipe+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Recipe+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2EE61CE11B5C292500E57D30 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
 		2EE61CE21B5C292500E57D30 /* RecipePhoto+CoreDataProperties.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "RecipePhoto+CoreDataProperties.swift"; sourceTree = "<group>"; };
@@ -167,12 +169,13 @@
 			isa = PBXGroup;
 			children = (
 				2E23FB261B52E51700EDBB68 /* API */,
-				2E6D75D61B3D9D410015307B /* Assets */,
 				2E6D75831B3D7E650015307B /* AppDelegate.swift */,
-				2E8479821B6AD8CE00E99F4B /* Gina_Lioti_Cooking-Bridging-Header.h */,
-				2E6D75851B3D7E650015307B /* RecipesVC.swift */,
-				2E6D75871B3D7E650015307B /* Main.storyboard */,
+				2E6D75D61B3D9D410015307B /* Assets */,
 				2E6D75D51B3D9D370015307B /* Core Data */,
+				2E8479821B6AD8CE00E99F4B /* Gina_Lioti_Cooking-Bridging-Header.h */,
+				2E6D75871B3D7E650015307B /* Main.storyboard */,
+				2EB4AE8F1B6B041300C7C7FB /* RecipeCollectionViewCell.swift */,
+				2E6D75851B3D7E650015307B /* RecipesVC.swift */,
 			);
 			path = "Gina Lioti Cooking";
 			sourceTree = "<group>";
@@ -423,6 +426,7 @@
 				2E23FB2C1B52FFF900EDBB68 /* CoreDataManager.swift in Sources */,
 				2E6D75841B3D7E650015307B /* AppDelegate.swift in Sources */,
 				2EE61CF01B5C292500E57D30 /* RecipeIngredients+CoreDataProperties.swift in Sources */,
+				2EB4AE901B6B041300C7C7FB /* RecipeCollectionViewCell.swift in Sources */,
 				2E23FB281B52EF1D00EDBB68 /* AppDataManager.swift in Sources */,
 				2EE61CEC1B5C292500E57D30 /* Recipe+CoreDataProperties.swift in Sources */,
 				2E23FB2A1B52F29B00EDBB68 /* UserDefaultsManager.swift in Sources */,
