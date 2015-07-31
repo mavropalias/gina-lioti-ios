@@ -65,6 +65,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="qZJ-5N-PLW" id="dhO-gW-dnf"/>
                                             <outlet property="titleLabel" destination="Dgi-0H-4Qw" id="hGW-xp-Z8v"/>
+                                            <segue destination="RTZ-du-ZMS" kind="show" id="5Sb-F9-Vsw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -91,6 +92,58 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1180" y="400"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="HV6-fg-3FK">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pdE-Ov-Cem" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <viewController id="RTZ-du-ZMS" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="eez-vf-EVf"/>
+                        <viewControllerLayoutGuide type="bottom" id="yqY-dT-qOk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="srs-dX-dwO">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xx-Tk-7au">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v7c-ZV-GJN">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1260"/>
+                                        <subviews>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="recipe-image" translatesAutoresizingMaskIntoConstraints="NO" id="Y0x-mG-QkS">
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="630"/>
+                                                <animations/>
+                                            </imageView>
+                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f18-NF-x2F">
+                                                <rect key="frame" x="0.0" y="630" width="600" height="630"/>
+                                                <animations/>
+                                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            </view>
+                                        </subviews>
+                                        <animations/>
+                                    </stackView>
+                                </subviews>
+                                <animations/>
+                                <constraints>
+                                    <constraint firstItem="v7c-ZV-GJN" firstAttribute="width" secondItem="6xx-Tk-7au" secondAttribute="width" id="S4a-28-4HQ"/>
+                                    <constraint firstItem="v7c-ZV-GJN" firstAttribute="centerX" secondItem="6xx-Tk-7au" secondAttribute="centerX" id="pzE-nQ-Vjq"/>
+                                </constraints>
+                            </scrollView>
+                        </subviews>
+                        <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6xx-Tk-7au" firstAttribute="height" secondItem="srs-dX-dwO" secondAttribute="height" id="1Oq-2s-zCz"/>
+                            <constraint firstItem="6xx-Tk-7au" firstAttribute="centerX" secondItem="srs-dX-dwO" secondAttribute="centerX" id="6oI-WM-MYm"/>
+                            <constraint firstItem="6xx-Tk-7au" firstAttribute="width" secondItem="srs-dX-dwO" secondAttribute="width" id="Od0-P7-GPe"/>
+                            <constraint firstItem="6xx-Tk-7au" firstAttribute="centerY" secondItem="srs-dX-dwO" secondAttribute="centerY" id="UOx-GT-euB"/>
+                        </constraints>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1946" y="400"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="ruS-aC-AYQ">
