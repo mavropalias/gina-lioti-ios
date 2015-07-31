@@ -109,17 +109,28 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xx-Tk-7au">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" ambiguous="YES" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="v7c-ZV-GJN">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="1260"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v7c-ZV-GJN">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="recipe-image" translatesAutoresizingMaskIntoConstraints="NO" id="Y0x-mG-QkS">
-                                                <rect key="frame" x="0.0" y="0.0" width="600" height="630"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                                 <animations/>
                                             </imageView>
-                                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f18-NF-x2F">
-                                                <rect key="frame" x="0.0" y="630" width="600" height="630"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f18-NF-x2F">
+                                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                                                <subviews>
+                                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZM-1P-Jf6">
+                                                        <rect key="frame" x="277" y="300" width="46" height="30"/>
+                                                        <animations/>
+                                                        <state key="normal" title="Button"/>
+                                                    </button>
+                                                </subviews>
                                                 <animations/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                <constraints>
+                                                    <constraint firstItem="dZM-1P-Jf6" firstAttribute="centerX" secondItem="f18-NF-x2F" secondAttribute="centerX" id="aOh-5y-cB4"/>
+                                                    <constraint firstItem="dZM-1P-Jf6" firstAttribute="centerY" secondItem="f18-NF-x2F" secondAttribute="centerY" id="gum-yL-opd"/>
+                                                </constraints>
                                             </view>
                                         </subviews>
                                         <animations/>
@@ -128,6 +139,8 @@
                                 <animations/>
                                 <constraints>
                                     <constraint firstItem="v7c-ZV-GJN" firstAttribute="width" secondItem="6xx-Tk-7au" secondAttribute="width" id="S4a-28-4HQ"/>
+                                    <constraint firstItem="v7c-ZV-GJN" firstAttribute="height" secondItem="6xx-Tk-7au" secondAttribute="height" id="Ss6-Kb-zDs"/>
+                                    <constraint firstItem="v7c-ZV-GJN" firstAttribute="centerY" secondItem="6xx-Tk-7au" secondAttribute="centerY" id="gsW-Gi-yiD"/>
                                     <constraint firstItem="v7c-ZV-GJN" firstAttribute="centerX" secondItem="6xx-Tk-7au" secondAttribute="centerX" id="pzE-nQ-Vjq"/>
                                 </constraints>
                             </scrollView>
