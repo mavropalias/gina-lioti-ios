@@ -9,7 +9,7 @@
 #ifndef Gina_Lioti_Cooking_Bridging_Header_h
 #define Gina_Lioti_Cooking_Bridging_Header_h
 
-//#import "Libraries/AFNetworking/AFNetworking.h"
-//#import "Libraries/UIKit+AFNetworking/UIImageView+AFNetworking.h"
+#import <AFNetworking/AFNetworking.h>
+#import "UIImageView+AFNetworking.h"
 
 #endif /* Gina_Lioti_Cooking_Bridging_Header_h */
