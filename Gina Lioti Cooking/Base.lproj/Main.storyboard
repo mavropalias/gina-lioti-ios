@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8164.2" systemVersion="15A235d" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="Kal-rr-DBN">
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8135.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -65,7 +64,7 @@
                                         <connections>
                                             <outlet property="imageView" destination="qZJ-5N-PLW" id="dhO-gW-dnf"/>
                                             <outlet property="titleLabel" destination="Dgi-0H-4Qw" id="hGW-xp-Z8v"/>
-                                            <segue destination="RTZ-du-ZMS" kind="show" id="5Sb-F9-Vsw"/>
+                                            <segue destination="RTZ-du-ZMS" kind="show" identifier="showRecipeDetails" id="5Sb-F9-Vsw"/>
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
@@ -93,11 +92,10 @@
             </objects>
             <point key="canvasLocation" x="1180" y="400"/>
         </scene>
-        <!--View Controller-->
+        <!--Recipe DetailsVC-->
         <scene sceneID="HV6-fg-3FK">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="pdE-Ov-Cem" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <viewController id="RTZ-du-ZMS" sceneMemberID="viewController">
+                <viewController id="RTZ-du-ZMS" customClass="RecipeDetailsVC" customModule="Gina_Lioti_Cooking" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="eez-vf-EVf"/>
                         <viewControllerLayoutGuide type="bottom" id="yqY-dT-qOk"/>
@@ -109,14 +107,14 @@
                             <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6xx-Tk-7au">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" misplaced="YES" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v7c-ZV-GJN">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="v7c-ZV-GJN">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="recipe-image" translatesAutoresizingMaskIntoConstraints="NO" id="Y0x-mG-QkS">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="recipe-image" translatesAutoresizingMaskIntoConstraints="NO" id="Y0x-mG-QkS">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
                                                 <animations/>
                                             </imageView>
-                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="f18-NF-x2F">
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f18-NF-x2F">
                                                 <rect key="frame" x="0.0" y="300" width="600" height="300"/>
                                                 <subviews>
                                                     <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dZM-1P-Jf6">
@@ -154,7 +152,13 @@
                             <constraint firstItem="6xx-Tk-7au" firstAttribute="centerY" secondItem="srs-dX-dwO" secondAttribute="centerY" id="UOx-GT-euB"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="recipeImageView" destination="Y0x-mG-QkS" id="aGr-Fl-9jV"/>
+                        <outlet property="scrollView" destination="6xx-Tk-7au" id="Xde-WD-vFa"/>
+                        <outlet property="stackView" destination="v7c-ZV-GJN" id="PUI-Fk-Jnr"/>
+                    </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pdE-Ov-Cem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1946" y="400"/>
         </scene>

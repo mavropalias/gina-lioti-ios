@@ -35,7 +35,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
 
 
-// MARK: Class properties
+// MARK: - Class properties
 // =============================================================================
 
     var cellWidth: CGFloat = 600.0
@@ -75,7 +75,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
 
 
-// MARK: IBOutlets
+// MARK: - IBOutlets
 // =============================================================================
 
     @IBOutlet weak var collectionView: UICollectionView!
@@ -84,7 +84,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
 
 
-// MARK: UIViewController
+// MARK: - UIViewController
 // =============================================================================
 
     override func viewDidLoad() {
@@ -107,7 +107,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
 
 
-// MARK: UICollectionViewDelegateFlowLayout
+// MARK: - UICollectionViewDelegateFlowLayout
 // =============================================================================
 
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAtIndexPath indexPath: NSIndexPath) -> CGSize {
@@ -118,7 +118,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
 
 
-// MARK: UICollectionViewDataSource
+// MARK: - UICollectionViewDataSource
 // =============================================================================
 
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -173,7 +173,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
 
 
-// MARK: NSFetchedResultsControllerDelegate
+// MARK: - NSFetchedResultsControllerDelegate
 // =============================================================================
 
     func controllerWillChangeContent(controller: NSFetchedResultsController) {
@@ -209,6 +209,21 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 //        tableView.endUpdates()
     }
 
+
+
+
+
+// MARK: - NSFetchedResultsControllerDelegate
+// =============================================================================
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if (segue.identifier! == "showRecipeDetails") {
+            guard let recipeDetailsVC = segue.destinationViewController as? RecipeDetailsVC else { return }
+            guard let cell = sender as? RecipeCollectionViewCell else { return }
+            guard let indexPath = self.collectionView!.indexPathForCell(cell) else { return }
+            let recipe = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Recipe
+            recipeDetailsVC.recipe = recipe
+        }
+    }
 
 
 
