@@ -20,6 +20,7 @@ class RecipeDetailsVC: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     @IBOutlet weak var recipeImageView: UIImageView!
+    @IBOutlet weak var recipeDescription: UITextView!
 
     var recipe: Recipe? {
         didSet {
@@ -36,8 +37,7 @@ class RecipeDetailsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        recipeDescription.scrollEnabled = false
     }
 
     override func viewWillAppear(animated: Bool) {
@@ -47,6 +47,13 @@ class RecipeDetailsVC: UIViewController {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
+
+        let fixedWidth = recipeDescription.frame.size.width
+        let newSize = recipeDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        var newFrame = recipeDescription.frame
+        newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
+        recipeDescription.frame = newFrame;
+        
         scrollView.contentSize = CGSize(width: stackView.frame.width, height: stackView.frame.height)
     }
 
@@ -57,6 +64,9 @@ class RecipeDetailsVC: UIViewController {
     
 
     func configureSelfWithRecipe() {
+        title = recipe?.title
+        recipeDescription.text = recipe?.descriptionB!
+
         if let photoArray = recipe!.photos?.allObjects {
             if !photoArray.isEmpty {
                 let photo: RecipePhoto = photoArray[0] as! RecipePhoto
