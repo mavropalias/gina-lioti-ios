@@ -22,10 +22,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // =========================================================================
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
-        // Set managedObjectContext in top view
-        let nav = self.window!.rootViewController as! UINavigationController
-        let master = nav.topViewController as! RecipesVC
-        master.managedObjectContext = self.managedObjectContext
+
+        // Global tint color
+        self.window?.tintColor = UIColor(red: 175/255, green: 30/255, blue: 64/255, alpha: 1.0)
+
+        // Set managedObjectContext in top view & configure tab controller
+        let tab = self.window!.rootViewController as! UITabBarController
+        tab.selectedIndex = 2
+//        let nav = tab.selectedViewController as! UINavigationController
+//        let master = nav.topViewController as! RecipesVC
+//        master.managedObjectContext = self.managedObjectContext
 
         // Init appManager
         let _ = AppDataManager()

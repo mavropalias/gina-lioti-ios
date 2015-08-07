@@ -46,7 +46,9 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
         }
-        let managedObjectContext = self.managedObjectContext!
+
+        let appDel:AppDelegate = (UIApplication.sharedApplication().delegate as! AppDelegate)
+        let managedObjectContext = appDel.managedObjectContext//self.managedObjectContext!
 
         let entity = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedObjectContext)
         let sort = NSSortDescriptor(key: "title", ascending: true)
@@ -89,7 +91,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Recipes";
+        title = "Gina's Recipes";
     }
 
     override func viewWillAppear(animated: Bool) {
