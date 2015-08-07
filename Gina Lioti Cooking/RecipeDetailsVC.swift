@@ -37,7 +37,9 @@ class RecipeDetailsVC: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
         recipeDescription.scrollEnabled = false
+        recipeDescription.textContainer.lineFragmentPadding = 0 // remove left+right padding
     }
 
     override func viewWillAppear(animated: Bool) {
