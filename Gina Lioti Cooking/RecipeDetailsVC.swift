@@ -40,6 +40,13 @@ class RecipeDetailsVC: UIViewController {
 
         recipeDescription.scrollEnabled = false
         recipeDescription.textContainer.lineFragmentPadding = 0 // remove left+right padding
+
+        // handoff
+        let activity = NSUserActivity(activityType: "com.ginalioti.handoff-recipe")
+        activity.title = recipe?.title
+        activity.userInfo = ["title": "", "content": ""]
+        userActivity = activity
+        userActivity?.becomeCurrent()
     }
 
     override func viewWillAppear(animated: Bool) {

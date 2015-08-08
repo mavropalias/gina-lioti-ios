@@ -71,6 +71,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.saveContext()
     }
 
+    func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+//        self.window?.rootViewController?.restoreUserActivityState(userActivity)
+
+//        override func restoreUserActivityState(activity: NSUserActivity) {
+//            self.noteTitleField.text = activity.userInfo?["title"] as! String
+//            self.noteContentView.text = activity.userInfo?["content"] as! String
+//        }
+
+        return true
+    }
+
 
 
 
