@@ -46,7 +46,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="contacts" id="rAb-tZ-BxN"/>
+                    <tabBarItem key="tabBarItem" title="Connect" image="tab-connect" id="rAb-tZ-BxN"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLp-x2-oKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -66,7 +66,7 @@
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
-                    <tabBarItem key="tabBarItem" systemItem="recents" id="dHF-My-mHt"/>
+                    <tabBarItem key="tabBarItem" title="Ingredients" image="tab-ingredients" id="dHF-My-mHt"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cfr-7n-5g6" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -92,7 +92,7 @@
             </objects>
             <point key="canvasLocation" x="-890" y="1716"/>
         </scene>
-        <!--Table View Controller-->
+        <!--Shopping-->
         <scene sceneID="MkD-2z-uld">
             <objects>
                 <tableViewController id="3TS-0Z-0Nl" sceneMemberID="viewController">
@@ -132,7 +132,7 @@
                             <outlet property="delegate" destination="3TS-0Z-0Nl" id="Wye-mz-AJo"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="sbx-tx-dHM"/>
+                    <tabBarItem key="tabBarItem" title="Shopping" image="tab-shopping" id="sbx-tx-dHM"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="FOd-eG-gTX" id="q4l-ka-SLM"/>
                     </connections>
@@ -438,7 +438,7 @@
         <scene sceneID="ruS-aC-AYQ">
             <objects>
                 <navigationController title="Recipes" automaticallyAdjustsScrollViewInsets="NO" id="Kal-rr-DBN" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" systemItem="featured" id="krY-Hn-1t1"/>
+                    <tabBarItem key="tabBarItem" title="Recipes" image="tab-recipes" id="krY-Hn-1t1"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="XZd-0c-RYm">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -458,6 +458,10 @@
     </scenes>
     <resources>
         <image name="recipe-image" width="1200" height="630"/>
+        <image name="tab-connect" width="25" height="25"/>
+        <image name="tab-ingredients" width="25" height="25"/>
+        <image name="tab-recipes" width="25" height="25"/>
+        <image name="tab-shopping" width="25" height="25"/>
     </resources>
     <color key="tintColor" red="0.68627450980392157" green="0.11764705882352941" blue="0.25098039215686274" alpha="1" colorSpace="deviceRGB"/>
 </document>

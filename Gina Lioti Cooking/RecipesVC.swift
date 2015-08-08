@@ -91,7 +91,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Gina's Recipes";
+        title = "Recipes";
     }
 
     override func viewWillAppear(animated: Bool) {
