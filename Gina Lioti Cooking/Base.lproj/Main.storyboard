@@ -35,7 +35,7 @@
         <!--Connect-->
         <scene sceneID="dTd-ct-Lv6">
             <objects>
-                <viewController title="Connect" id="4Le-b2-OBg" sceneMemberID="viewController">
+                <viewController title="Connect" id="4Le-b2-OBg" customClass="ConnectVC" customModule="Gina_Lioti_Cooking" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4aA-Zp-eJV"/>
                         <viewControllerLayoutGuide type="bottom" id="CM2-a5-FR0"/>
@@ -43,10 +43,39 @@
                     <view key="view" contentMode="scaleToFill" id="ANJ-aa-a4T">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snD-aw-aqk">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
+                            </webView>
+                        </subviews>
                         <animations/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="snD-aw-aqk" firstAttribute="width" secondItem="ANJ-aa-a4T" secondAttribute="width" id="0rf-z3-IhH"/>
+                            <constraint firstItem="CM2-a5-FR0" firstAttribute="top" secondItem="snD-aw-aqk" secondAttribute="bottom" id="3HD-RO-C74"/>
+                            <constraint firstItem="snD-aw-aqk" firstAttribute="top" secondItem="4aA-Zp-eJV" secondAttribute="bottom" id="40U-jQ-bzq"/>
+                            <constraint firstItem="snD-aw-aqk" firstAttribute="leading" secondItem="ANJ-aa-a4T" secondAttribute="leading" id="WDR-aA-Txo"/>
+                            <constraint firstItem="snD-aw-aqk" firstAttribute="height" secondItem="ANJ-aa-a4T" secondAttribute="height" id="dES-eM-hHc"/>
+                            <constraint firstItem="snD-aw-aqk" firstAttribute="centerY" secondItem="ANJ-aa-a4T" secondAttribute="centerY" id="hBA-04-Sjd"/>
+                            <constraint firstAttribute="trailing" secondItem="snD-aw-aqk" secondAttribute="trailing" id="sIo-br-iD7"/>
+                            <constraint firstItem="snD-aw-aqk" firstAttribute="centerX" secondItem="ANJ-aa-a4T" secondAttribute="centerX" id="tge-mC-uH5"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="40U-jQ-bzq"/>
+                                <exclude reference="WDR-aA-Txo"/>
+                                <exclude reference="sIo-br-iD7"/>
+                                <exclude reference="3HD-RO-C74"/>
+                            </mask>
+                        </variation>
                     </view>
                     <tabBarItem key="tabBarItem" title="Connect" image="tab-connect" id="rAb-tZ-BxN"/>
+                    <connections>
+                        <outlet property="webView" destination="snD-aw-aqk" id="Kho-qA-G9D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oLp-x2-oKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -432,7 +461,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pdE-Ov-Cem" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2758" y="400"/>
+            <point key="canvasLocation" x="2031" y="400"/>
         </scene>
         <!--Recipes-->
         <scene sceneID="ruS-aC-AYQ">

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		061E16D016466FCBEFF8331E /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5027B1B6A650183F82E77554 /* libPods.a */; };
+		2E052D4E1B7781F300A895E4 /* ConnectVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E052D4D1B7781F300A895E4 /* ConnectVC.swift */; };
 		2E23FB251B52E50900EDBB68 /* ApiManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23FB241B52E50900EDBB68 /* ApiManager.swift */; };
 		2E23FB281B52EF1D00EDBB68 /* AppDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23FB271B52EF1D00EDBB68 /* AppDataManager.swift */; };
 		2E23FB2A1B52F29B00EDBB68 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E23FB291B52F29B00EDBB68 /* UserDefaultsManager.swift */; };
@@ -69,6 +70,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		2E052D4D1B7781F300A895E4 /* ConnectVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConnectVC.swift; sourceTree = "<group>"; };
 		2E23FB241B52E50900EDBB68 /* ApiManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ApiManager.swift; sourceTree = "<group>"; };
 		2E23FB271B52EF1D00EDBB68 /* AppDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDataManager.swift; sourceTree = "<group>"; };
 		2E23FB291B52F29B00EDBB68 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
@@ -173,11 +175,12 @@
 				2E23FB261B52E51700EDBB68 /* API */,
 				2E6D75831B3D7E650015307B /* AppDelegate.swift */,
 				2E6D75D61B3D9D410015307B /* Assets */,
+				2E052D4D1B7781F300A895E4 /* ConnectVC.swift */,
 				2E6D75D51B3D9D370015307B /* Core Data */,
 				2E6D75871B3D7E650015307B /* Main.storyboard */,
 				2EB4AE8F1B6B041300C7C7FB /* RecipeCollectionViewCell.swift */,
-				2E6D75851B3D7E650015307B /* RecipesVC.swift */,
 				2EB13AE01B6C3CB100248B48 /* RecipeDetailsVC.swift */,
+				2E6D75851B3D7E650015307B /* RecipesVC.swift */,
 			);
 			path = "Gina Lioti Cooking";
 			sourceTree = "<group>";
@@ -430,6 +433,7 @@
 				2E6D75841B3D7E650015307B /* AppDelegate.swift in Sources */,
 				2EE61CF01B5C292500E57D30 /* RecipeIngredients+CoreDataProperties.swift in Sources */,
 				2EB4AE901B6B041300C7C7FB /* RecipeCollectionViewCell.swift in Sources */,
+				2E052D4E1B7781F300A895E4 /* ConnectVC.swift in Sources */,
 				2E23FB281B52EF1D00EDBB68 /* AppDataManager.swift in Sources */,
 				2EE61CEC1B5C292500E57D30 /* Recipe+CoreDataProperties.swift in Sources */,
 				2E23FB2A1B52F29B00EDBB68 /* UserDefaultsManager.swift in Sources */,
