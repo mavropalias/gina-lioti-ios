@@ -109,6 +109,23 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
 
 
+// MARK: - Helpers
+// =============================================================================
+
+    func showRecipe(recipeId: Int) {
+        guard let recipes = fetchedResultsController.fetchedObjects as? [Recipe] else { return }
+
+        for recipe in recipes {
+            if recipe.id == recipeId {
+                performSegueWithIdentifier("showRecipeDetails", sender: recipe)
+                break
+            }
+        }
+    }
+
+
+
+
 // MARK: - UICollectionViewDelegateFlowLayout
 // =============================================================================
 
@@ -215,15 +232,20 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
 
 
-// MARK: - NSFetchedResultsControllerDelegate
+// MARK: - Navigation
 // =============================================================================
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if (segue.identifier! == "showRecipeDetails") {
             guard let recipeDetailsVC = segue.destinationViewController as? RecipeDetailsVC else { return }
-            guard let cell = sender as? RecipeCollectionViewCell else { return }
-            guard let indexPath = self.collectionView!.indexPathForCell(cell) else { return }
-            let recipe = self.fetchedResultsController.objectAtIndexPath(indexPath) as! Recipe
-            recipeDetailsVC.recipe = recipe
+
+            if (sender!.isKindOfClass(RecipeCollectionViewCell)) {
+                guard let cell = sender as? RecipeCollectionViewCell else { return }
+                guard let indexPath = self.collectionView!.indexPathForCell(cell) else { return }
+                recipeDetailsVC.recipe = self.fetchedResultsController.objectAtIndexPath(indexPath) as? Recipe
+            } else if (sender!.isKindOfClass(Recipe)) {
+                recipeDetailsVC.recipe = sender as? Recipe
+            }
         }
     }
 

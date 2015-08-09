@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import CoreSpotlight
+import MobileCoreServices
 
 class RecipeDetailsVC: UIViewController {
 
@@ -93,6 +95,7 @@ class RecipeDetailsVC: UIViewController {
                 recipeImageView.setImageWithURLRequest(url_request, placeholderImage: placeholder, success: { [weak recipeImageView] (request:NSURLRequest!,response:NSHTTPURLResponse!, image:UIImage!) -> Void in
                     if let cell_for_image = recipeImageView {
                         cell_for_image.image = image
+                        self.indexRecipe(image)
                     }
                     }, failure: { [weak recipeImageView]
                         (request:NSURLRequest!,response:NSHTTPURLResponse!, error:NSError!) -> Void in
@@ -100,6 +103,24 @@ class RecipeDetailsVC: UIViewController {
                             cell_for_image.image = nil
                         }
                     })
+            }
+        }
+    }
+
+    func indexRecipe(image: UIImage) {
+        // Index recipe in core spotlight
+        let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
+        attributeSet.title = self.recipe!.title
+        attributeSet.contentDescription = self.recipe!.descriptionA
+        attributeSet.keywords = ["gina", "lioti", "greek", "recipe"]
+        attributeSet.thumbnailData = NSData(data: UIImagePNGRepresentation(image)!)
+
+        let item = CSSearchableItem(uniqueIdentifier: "\(self.recipe?.id)", domainIdentifier: "com.ginalioti", attributeSet: attributeSet)
+        CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([item]) { (error: NSError?) -> Void in
+            if let error = error {
+                print("Indexing error: \(error.localizedDescription)")
+            } else {
+                print("Search item successfully indexed!")
             }
         }
     }

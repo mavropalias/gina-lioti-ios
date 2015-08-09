@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import Foundation
+import CoreSpotlight
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,7 +55,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-        // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        // If your application supliotiports background execution, this method is called instead of applicationWillTerminate: when the user quits.
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
@@ -72,6 +73,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
 
     func application(application: UIApplication, continueUserActivity userActivity: NSUserActivity, restorationHandler: ([AnyObject]?) -> Void) -> Bool {
+        if  userActivity.activityType == CSSearchableItemActionType {
+            // Get recipe id
+            let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String
+            let recipeId = Int(uniqueIdentifier!)
+
+            let tabBarController = self.window!.rootViewController as! UITabBarController // Get tabbar controller
+            tabBarController.selectedIndex = 2 // Selecte 'recipes' tab
+            let navController = tabBarController.selectedViewController as! UINavigationController
+            navController.popToRootViewControllerAnimated(false) // Navigate to root view
+            let recipesController = navController.topViewController as! RecipesVC
+            recipesController.showRecipe(355)
+        }
 //        self.window?.rootViewController?.restoreUserActivityState(userActivity)
 
 //        override func restoreUserActivityState(activity: NSUserActivity) {
