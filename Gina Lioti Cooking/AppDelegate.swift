@@ -79,7 +79,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             let recipeId = Int(uniqueIdentifier!)
 
             let tabBarController = self.window!.rootViewController as! UITabBarController // Get tabbar controller
-            tabBarController.selectedIndex = 2 // Selecte 'recipes' tab
+            tabBarController.selectedIndex = 2 // Select 'recipes' tab
             let navController = tabBarController.selectedViewController as! UINavigationController
             navController.popToRootViewControllerAnimated(false) // Navigate to root view
             let recipesController = navController.topViewController as! RecipesVC
