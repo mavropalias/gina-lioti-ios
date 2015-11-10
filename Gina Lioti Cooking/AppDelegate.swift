@@ -29,7 +29,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // Set managedObjectContext in top view & configure tab controller
         let tab = self.window!.rootViewController as! UITabBarController
-        tab.selectedIndex = 2
+        tab.selectedIndex = 1
 //        let nav = tab.selectedViewController as! UINavigationController
 //        let master = nav.topViewController as! RecipesVC
 //        master.managedObjectContext = self.managedObjectContext

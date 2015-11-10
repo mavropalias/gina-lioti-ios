@@ -21,65 +21,14 @@
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>
                     <connections>
-                        <segue destination="aZu-ra-SHo" kind="relationship" relationship="viewControllers" id="J3u-r7-SSe"/>
                         <segue destination="3TS-0Z-0Nl" kind="relationship" relationship="viewControllers" id="gM0-ge-nK3"/>
                         <segue destination="Kal-rr-DBN" kind="relationship" relationship="viewControllers" id="UHy-3L-tNO"/>
                         <segue destination="aQk-x4-lQG" kind="relationship" relationship="viewControllers" id="K45-lM-BLe"/>
-                        <segue destination="4Le-b2-OBg" kind="relationship" relationship="viewControllers" id="6p8-Aw-OFz"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="v2d-6N-v9b" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-890" y="811"/>
-        </scene>
-        <!--Connect-->
-        <scene sceneID="dTd-ct-Lv6">
-            <objects>
-                <viewController title="Connect" id="4Le-b2-OBg" customClass="ConnectVC" customModule="Gina_Lioti_Cooking" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="4aA-Zp-eJV"/>
-                        <viewControllerLayoutGuide type="bottom" id="CM2-a5-FR0"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ANJ-aa-a4T">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="snD-aw-aqk">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                                <animations/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <dataDetectorType key="dataDetectorTypes" phoneNumber="YES" link="YES"/>
-                            </webView>
-                        </subviews>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <constraints>
-                            <constraint firstItem="snD-aw-aqk" firstAttribute="width" secondItem="ANJ-aa-a4T" secondAttribute="width" id="0rf-z3-IhH"/>
-                            <constraint firstItem="CM2-a5-FR0" firstAttribute="top" secondItem="snD-aw-aqk" secondAttribute="bottom" id="3HD-RO-C74"/>
-                            <constraint firstItem="snD-aw-aqk" firstAttribute="top" secondItem="4aA-Zp-eJV" secondAttribute="bottom" id="40U-jQ-bzq"/>
-                            <constraint firstItem="snD-aw-aqk" firstAttribute="leading" secondItem="ANJ-aa-a4T" secondAttribute="leading" id="WDR-aA-Txo"/>
-                            <constraint firstItem="snD-aw-aqk" firstAttribute="height" secondItem="ANJ-aa-a4T" secondAttribute="height" id="dES-eM-hHc"/>
-                            <constraint firstItem="snD-aw-aqk" firstAttribute="centerY" secondItem="ANJ-aa-a4T" secondAttribute="centerY" id="hBA-04-Sjd"/>
-                            <constraint firstAttribute="trailing" secondItem="snD-aw-aqk" secondAttribute="trailing" id="sIo-br-iD7"/>
-                            <constraint firstItem="snD-aw-aqk" firstAttribute="centerX" secondItem="ANJ-aa-a4T" secondAttribute="centerX" id="tge-mC-uH5"/>
-                        </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="40U-jQ-bzq"/>
-                                <exclude reference="WDR-aA-Txo"/>
-                                <exclude reference="sIo-br-iD7"/>
-                                <exclude reference="3HD-RO-C74"/>
-                            </mask>
-                        </variation>
-                    </view>
-                    <tabBarItem key="tabBarItem" title="Connect" image="tab-connect" id="rAb-tZ-BxN"/>
-                    <connections>
-                        <outlet property="webView" destination="snD-aw-aqk" id="Kho-qA-G9D"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="oLp-x2-oKn" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2284" y="1716"/>
         </scene>
         <!--Ingredients-->
         <scene sceneID="Xrz-Ti-fnz">
@@ -101,27 +50,7 @@
             </objects>
             <point key="canvasLocation" x="-1584" y="1716"/>
         </scene>
-        <!--Favorites-->
-        <scene sceneID="00g-ZS-Pmq">
-            <objects>
-                <viewController title="Favorites" id="aZu-ra-SHo" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="6Wd-qI-pMh"/>
-                        <viewControllerLayoutGuide type="bottom" id="5uU-Tu-cSA"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="We6-Yj-r1K">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <tabBarItem key="tabBarItem" systemItem="favorites" id="qP8-K8-cpa"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bv1-a3-XgP" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-890" y="1716"/>
-        </scene>
-        <!--Shopping-->
+        <!--Shop-->
         <scene sceneID="MkD-2z-uld">
             <objects>
                 <tableViewController id="3TS-0Z-0Nl" sceneMemberID="viewController">
@@ -161,7 +90,7 @@
                             <outlet property="delegate" destination="3TS-0Z-0Nl" id="Wye-mz-AJo"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Shopping" image="tab-shopping" id="sbx-tx-dHM"/>
+                    <tabBarItem key="tabBarItem" title="Shop" image="tab-shopping" id="sbx-tx-dHM"/>
                     <connections>
                         <outlet property="searchDisplayController" destination="FOd-eG-gTX" id="q4l-ka-SLM"/>
                     </connections>
@@ -482,12 +411,11 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xHB-oR-4OG" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1070" y="-292"/>
+            <point key="canvasLocation" x="414" y="400"/>
         </scene>
     </scenes>
     <resources>
         <image name="recipe-image" width="1200" height="630"/>
-        <image name="tab-connect" width="25" height="25"/>
         <image name="tab-ingredients" width="25" height="25"/>
         <image name="tab-recipes" width="25" height="25"/>
         <image name="tab-shopping" width="25" height="25"/>
