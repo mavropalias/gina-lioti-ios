@@ -13,12 +13,12 @@ import Foundation
 class CoreDataManager {
     func load() -> ([Recipe]?, [Ingredient]?) {
         var recipes: [Recipe]? = nil
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
+        let appDelegate = UIApplication.shared().delegate as! AppDelegate
         let managedContext = appDelegate.managedObjectContext
         let model = managedContext.persistentStoreCoordinator?.managedObjectModel
-        let fetchRequest = model?.fetchRequestFromTemplateWithName("FetchAllRecipes", substitutionVariables: [:])
+        let fetchRequest = model?.fetchRequestFromTemplate(withName: "FetchAllRecipes", substitutionVariables: [:])
         do {
-            recipes = try managedContext.executeFetchRequest(fetchRequest!) as? [Recipe]
+            recipes = try managedContext.fetch(fetchRequest!) as? [Recipe]
             return (recipes, nil)
         } catch {
             return (nil, nil)

@@ -40,7 +40,7 @@ class RecipeDetailsVC: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        recipeDescription.scrollEnabled = false
+        recipeDescription.isScrollEnabled = false
         recipeDescription.textContainer.lineFragmentPadding = 0 // remove left+right padding
 
         // handoff
@@ -51,7 +51,7 @@ class RecipeDetailsVC: UIViewController {
         userActivity?.becomeCurrent()
     }
 
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         configureSelfWithRecipe()
     }
@@ -60,7 +60,7 @@ class RecipeDetailsVC: UIViewController {
         super.viewDidLayoutSubviews()
 
         let fixedWidth = recipeDescription.frame.size.width
-        let newSize = recipeDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.max))
+        let newSize = recipeDescription.sizeThatFits(CGSize(width: fixedWidth, height: CGFloat.greatestFiniteMagnitude))
         var newFrame = recipeDescription.frame
         newFrame.size = CGSize(width: max(newSize.width, fixedWidth), height: newSize.height)
         recipeDescription.frame = newFrame;
@@ -107,16 +107,16 @@ class RecipeDetailsVC: UIViewController {
 //        }
     }
 
-    func indexRecipe(image: UIImage) {
+    func indexRecipe(_ image: UIImage) {
         // Index recipe in core spotlight
         let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeText as String)
         attributeSet.title = self.recipe!.title
         attributeSet.contentDescription = self.recipe!.descriptionA
         attributeSet.keywords = ["gina", "lioti", "greek", "recipe"]
-        attributeSet.thumbnailData = NSData(data: UIImagePNGRepresentation(image)!)
+        attributeSet.thumbnailData = NSData(data: UIImagePNGRepresentation(image)!) as Data
 
         let item = CSSearchableItem(uniqueIdentifier: "\(self.recipe?.id)", domainIdentifier: "com.ginalioti", attributeSet: attributeSet)
-        CSSearchableIndex.defaultSearchableIndex().indexSearchableItems([item]) { (error: NSError?) -> Void in
+        CSSearchableIndex.default().indexSearchableItems([item]) { (error: NSError?) -> Void in
             if let error = error {
                 print("Indexing error: \(error.localizedDescription)")
             } else {

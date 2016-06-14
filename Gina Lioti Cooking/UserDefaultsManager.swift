@@ -9,10 +9,10 @@
 import Foundation
 
 class UserDefaultsManager {
-    let userDefaults = NSUserDefaults.standardUserDefaults()
+    let userDefaults = UserDefaults.standard()
 
-    func lastSyncDate() -> NSDate? {
-        if let lastSyncDate = userDefaults.objectForKey("lastSync") as? NSDate {
+    func lastSyncDate() -> Date? {
+        if let lastSyncDate = userDefaults.object(forKey: "lastSync") as? Date {
             return lastSyncDate
         }
 

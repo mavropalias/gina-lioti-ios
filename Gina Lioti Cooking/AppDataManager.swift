@@ -26,8 +26,8 @@ class AppDataManager {
 
     func shouldFetchFromAPI() -> Bool {
         if let lastSyncDate = userDefaultsManager.lastSyncDate() {
-            let currentDate = NSDate()
-            if hourDifference(fromDate: lastSyncDate, toDate: currentDate) < apiSyncIntervalHours {
+            let currentDate = Date()
+            if hourDifference(fromDate: lastSyncDate as Date, toDate: currentDate) < apiSyncIntervalHours {
                 return false
             }
         }
@@ -35,9 +35,9 @@ class AppDataManager {
         return true
     }
 
-    func hourDifference(fromDate startDate: NSDate, toDate endDate: NSDate) -> Int {
-        let cal = NSCalendar.currentCalendar()
-        let comparisonResult = cal.compareDate(startDate, toDate: endDate, toUnitGranularity: .Hour)
+    func hourDifference(fromDate startDate: Date, toDate endDate: Date) -> Int {
+        let cal = Calendar.current()
+        let comparisonResult = cal.compare(startDate, to: endDate, toUnitGranularity: .hour)
 
         return comparisonResult.rawValue
     }

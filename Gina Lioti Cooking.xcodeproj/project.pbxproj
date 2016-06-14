@@ -288,13 +288,16 @@
 					2E6D757F1B3D7E650015307B = {
 						CreatedOnToolsVersion = 7.0;
 						DevelopmentTeam = 38QFH693YQ;
+						LastSwiftMigration = 0800;
 					};
 					2E6D75961B3D7E650015307B = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 						TestTargetID = 2E6D757F1B3D7E650015307B;
 					};
 					2E6D75A11B3D7E650015307B = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0800;
 						TestTargetID = 2E6D757F1B3D7E650015307B;
 					};
 				};
@@ -523,6 +526,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -540,6 +544,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "gl.Gina-Lioti-Cooking";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -552,6 +557,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gl.Gina-Lioti-CookingTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gina Lioti Cooking.app/Gina Lioti Cooking";
 			};
 			name = Debug;
@@ -564,6 +570,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gl.Gina-Lioti-CookingTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Gina Lioti Cooking.app/Gina Lioti Cooking";
 			};
 			name = Release;
@@ -575,6 +582,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gl.Gina-Lioti-CookingUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Gina Lioti Cooking";
 				USES_XCTRUNNER = YES;
 			};
@@ -587,6 +595,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "gl.Gina-Lioti-CookingUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Gina Lioti Cooking";
 				USES_XCTRUNNER = YES;
 			};

@@ -14,8 +14,8 @@ import CoreData
 
 extension Recipe {
 
-    @NSManaged var dateModified: NSDate?
-    @NSManaged var datePublished: NSDate?
+    @NSManaged var dateModified: Date?
+    @NSManaged var datePublished: Date?
     @NSManaged var descriptionA: String?
     @NSManaged var descriptionB: String?
     @NSManaged var id: NSNumber?
