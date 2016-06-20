@@ -148,6 +148,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return managedObjectContext
     }()
 
+    var persistentContainer: NSPersistentContainer {
+        let container = NSPersistentContainer(name: "Gina_Lioti_Cooking")
+        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+            if let error = error {
+                fatalError("Unresolved error \(error), \(error.userInfo)")
+            }
+        })
+        return container
+    }
 
 
 
@@ -168,24 +177,5 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
         }
     }
-
-
-
-
-
-    // MARK: - Utility functions
-    // =========================================================================
-
-    func backgroundThread(_ delay: Double = 0.0, background: (() -> Void)? = nil, completion: (() -> Void)? = nil) {
-        DispatchQueue.global(Int(UInt64(DispatchQueueAttributes.qosBackground.rawValue)), 0).async {
-            if(background != nil){ background!(); }
-
-            let popTime = DispatchTime.now() + Double(Int64(delay * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-            DispatchQueue.main.after(when: popTime) {
-                if(completion != nil){ completion!(); }
-            }
-        }
-    }
-
 }
 

@@ -35,6 +35,7 @@ class ApiManager {
 
     // fetch
     func fetch() {
+        // TODO: do this in a background thread
         let fetchUrl = URL(string: url)!
         let task = URLSession.shared().dataTask(with: fetchUrl) {(data, response, error) in
             if let gotData = data {
@@ -42,13 +43,6 @@ class ApiManager {
             }
         }
         task.resume()
-
-        app.backgroundThread(
-            background: {
-
-            },
-            completion: {}
-        );
     }
 
 
@@ -66,20 +60,21 @@ class ApiManager {
         var recipes = [Recipe]()
 
         guard let entity = NSEntityDescription.entity(forEntityName: "Recipe", in: managedObjectContext) else { return }
-
         for recipeJson in recipesJsonArray {
             guard let recipeId = recipeJson.value(forKey: "id") as? NSNumber else { return }
             var recipe = NSManagedObject(entity: entity, insertInto: nil) as! Recipe
             var needToSaveRecipe = true
 
             if let localRecipe = getExistingRecipeById(recipeId) {
+                print ("Found existing recipe: \(localRecipe.title)")
                 recipe = localRecipe
                 needToSaveRecipe = false
             } else {
                 recipe.id = recipeId
             }
-
-            if let title = recipeJson.value(forKey: "title") as? String {
+            
+            if let title = recipeJson.value(forKey: "title_plain") as? String {
+                print ("New recipe: \(decodeHtmlEncodedString(title))")
                 recipe.title = decodeHtmlEncodedString(title)
             } else {
                 recipe.title = ""
@@ -92,7 +87,7 @@ class ApiManager {
                 //recipe.photos = photosetFromJson(photos, forRecipe: recipe)
                 insertRecipePhotosToCoreDataFromJson(photos, forRecipe: recipe)
             }
-
+return
             recipe.slug = recipeJson.value(forKey: "slug") as? String
             recipe.descriptionA = recipeJson.value(forKey: "description") as? String
             recipe.descriptionB = decodeHtmlEncodedString((recipeJson.value(forKey: "content") as? String)!)
@@ -141,7 +136,7 @@ class ApiManager {
     }
 
     private func getExistingRecipeById(_ recipeId: NSNumber) -> Recipe? {
-        let fetchRequest = NSFetchRequest(entityName: "Recipe")
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = Recipe.fetchRequest()
         let predicate = Predicate(format: "%K == %@", "id", recipeId);
         fetchRequest.predicate = predicate
 
@@ -159,7 +154,7 @@ class ApiManager {
     }
 
     private func getExistingPhotoByUrl(_ photoUrl: String) -> RecipePhoto? {
-        let fetchRequest = NSFetchRequest(entityName: "RecipePhoto")
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = RecipePhoto.fetchRequest()
         let predicate = Predicate(format: "%K == %@", "url", photoUrl);
         fetchRequest.predicate = predicate
 
@@ -208,8 +203,9 @@ class ApiManager {
                 do {
                     print("– Saving photo context")
                     try managedObjectContext.save()
-                } catch {
+                } catch let error as NSError {
                     print("### ERROR 3")
+                    print("Unresolved error \(error), \(error.userInfo)")
                 }
             }
         }
@@ -218,8 +214,8 @@ class ApiManager {
     private func decodeHtmlEncodedString(_ html: String) -> String {
         let encodedData = html.data(using: String.Encoding.utf8)!
         let attributedOptions : [String: AnyObject] = [
-            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType,
-            NSCharacterEncodingDocumentAttribute: String.Encoding.utf8
+            NSDocumentTypeDocumentAttribute: NSHTMLTextDocumentType
+            //NSCharacterEncodingDocumentAttribute: String.Encoding.utf8
         ]
 
         let attributedString: AttributedString

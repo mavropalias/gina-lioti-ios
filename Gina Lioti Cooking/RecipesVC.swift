@@ -18,6 +18,7 @@ extension UIImageView {
     public func imageFromUrl(_ urlString: String) {
         if let url = URL(string: urlString) {
             let request = URLRequest(url: url)
+            
             NSURLConnection.sendAsynchronousRequest(request, queue: OperationQueue.main()) {
                 (response: URLResponse?, data: Data?, error: NSError?) -> Void in
                 if let imageData = data {
@@ -41,7 +42,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     var cellWidth: CGFloat = 600.0
     var cellHeight: CGFloat = 200.0
     var managedObjectContext: NSManagedObjectContext?
-    var fetchedResultsController: NSFetchedResultsController<AnyObject> {
+    var fetchedResultsController: NSFetchedResultsController<Recipe> {
         // return if already initialized
         if self._fetchedResultsController != nil {
             return self._fetchedResultsController!
@@ -52,7 +53,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
         let entity = NSEntityDescription.entity(forEntityName: "Recipe", in: managedObjectContext)
         let sort = SortDescriptor(key: "title", ascending: true)
-        let req = NSFetchRequest()
+        let req = NSFetchRequest<Recipe>(entityName: "Recipe")
         req.entity = entity
         req.sortDescriptors = [sort]
 
@@ -71,7 +72,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 
         return self._fetchedResultsController!
     }
-    var _fetchedResultsController: NSFetchedResultsController<AnyObject>?
+    var _fetchedResultsController: NSFetchedResultsController<Recipe>?
 
 
 
@@ -113,7 +114,7 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
 // =============================================================================
 
     func showRecipe(_ recipeId: Int) {
-        guard let recipes = fetchedResultsController.fetchedObjects as? [Recipe] else { return }
+        guard let recipes = fetchedResultsController.fetchedObjects as? [Recipe]! else { return }
 
         for recipe in recipes {
             if recipe.id == recipeId {
@@ -154,13 +155,13 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
     /* helper method to configure a `UITableViewCell`
     ask `NSFetchedResultsController` for the model */
     func configureCell(_ cell: RecipeCollectionViewCell, atIndexPath indexPath: IndexPath) {
-        let recipe = self.fetchedResultsController.object(at: indexPath) as! Recipe
+        let recipe = self.fetchedResultsController.object(at: indexPath)
         cell.titleLabel.text = recipe.title
         //cell.detailTextLabel!.text = "\(recipe.photos?.count) photos"
 
         if let photoArray = recipe.photos?.allObjects {
             if !photoArray.isEmpty {
-                let photo: RecipePhoto = photoArray[0] as! RecipePhoto
+//                let photo: RecipePhoto = photoArray[0] as! RecipePhoto
 
 //                let photoUrl = photo.url!
 //                let extensionIndex = advance(photoUrl.endIndex, -4)
@@ -239,13 +240,13 @@ class RecipesVC: UIViewController, UICollectionViewDataSource, UICollectionViewD
         if (segue.identifier! == "showRecipeDetails") {
             guard let recipeDetailsVC = segue.destinationViewController as? RecipeDetailsVC else { return }
 
-            if (sender!.isKind(RecipeCollectionViewCell)) {
-                guard let cell = sender as? RecipeCollectionViewCell else { return }
-                guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
-                recipeDetailsVC.recipe = self.fetchedResultsController.object(at: indexPath) as? Recipe
-            } else if (sender!.isKind(Recipe)) {
-                recipeDetailsVC.recipe = sender as? Recipe
-            }
+//            if (sender!.isKind(RecipeCollectionViewCell)) {
+//                guard let cell = sender as? RecipeCollectionViewCell else { return }
+//                guard let indexPath = self.collectionView!.indexPath(for: cell) else { return }
+//                recipeDetailsVC.recipe = self.fetchedResultsController.object(at: indexPath) as? Recipe
+//            } else if (sender!.isKind(Recipe)) {
+//                recipeDetailsVC.recipe = sender as? Recipe
+//            }
         }
     }
 
